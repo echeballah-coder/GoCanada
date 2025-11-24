@@ -1,4 +1,4 @@
-/* Reset léger */
+/* --- Reset & Base --- */
 * {
     margin: 0;
     padding: 0;
@@ -6,23 +6,76 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: var(--font-family-base);
     background-color: var(--color-bg-body);
     color: var(--color-text-main);
     line-height: 1.6;
+    font-size: var(--font-size-base);
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Layout simple */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Typographie --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-primary);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+p {
+    margin-bottom: var(--space-md);
+    color: var(--color-text-muted);
+}
+
+/* --- Layout --- */
 .container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--space-md);
 }
 
+/* --- Header --- */
 header {
     background-color: var(--color-bg-card);
-    border-bottom: 1px solid var(--border-color);
-    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-sm) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
 }
 
 header .container {
@@ -31,46 +84,76 @@ header .container {
     align-items: center;
 }
 
+.logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.03em;
+}
+
+.logo span.accent-red {
+    color: var(--color-accent-red);
+}
+
+.logo span.accent-green {
+    color: var(--color-accent-green);
+}
+
 header nav ul {
     display: flex;
-    list-style: none;
-    gap: var(--spacing-md);
+    gap: var(--space-md);
 }
 
 header nav a {
-    text-decoration: none;
-    color: var(--color-text-main);
     font-weight: 500;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
 }
 
-header nav a:hover {
+header nav a:hover,
+header nav a.active {
     color: var(--color-primary);
+    border-bottom-color: var(--color-accent-red);
+    /* Subtil rappel Canada */
 }
 
+/* --- Main Content --- */
 main {
-    padding: var(--spacing-xl) 0;
-    min-height: 80vh;
+    flex: 1;
+    /* Pousse le footer vers le bas */
+    padding: var(--space-xl) 0;
 }
 
+/* --- Footer --- */
 footer {
-    background-color: var(--color-primary);
-    color: white;
-    padding: var(--spacing-lg) 0;
+    background-color: var(--color-bg-footer);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-lg) 0;
     text-align: center;
-    margin-top: auto;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
 }
 
-h1,
-h2,
-h3 {
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
-}
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
 
-h1 {
-    font-size: 2.5rem;
-}
+    header nav ul {
+        gap: var(--space-sm);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
-section {
-    margin-bottom: var(--spacing-xl);
+    h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        padding: var(--space-lg) 0;
+    }
 }
