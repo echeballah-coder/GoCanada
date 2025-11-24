@@ -1,0 +1,76 @@
+/* Reset léger */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--color-bg-body);
+    color: var(--color-text-main);
+    line-height: 1.6;
+}
+
+/* Layout simple */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+header {
+    background-color: var(--color-bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-md) 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-md);
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--color-text-main);
+    font-weight: 500;
+}
+
+header nav a:hover {
+    color: var(--color-primary);
+}
+
+main {
+    padding: var(--spacing-xl) 0;
+    min-height: 80vh;
+}
+
+footer {
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+section {
+    margin-bottom: var(--spacing-xl);
+}

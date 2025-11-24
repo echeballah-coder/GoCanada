@@ -1,0 +1,30 @@
+:root {
+    /* Palette de couleurs */
+    /* Fond global doux (beige / blanc cassé) */
+    --color-bg-body: #F9F9F7;
+    --color-bg-card: #FFFFFF;
+
+    /* Bleu principal moderne (SaaS / Confiance) */
+    --color-primary: #0A2540;
+    --color-primary-light: #183B5E;
+
+    /* Accents subtils (Canada/Algérie) */
+    --color-accent-red: #D82D2D; /* Touche Canada */
+    --color-accent-green: #2D8A56; /* Touche Algérie */
+
+    /* Texte */
+    --color-text-main: #1A1A1A;
+    --color-text-muted: #666666;
+
+    /* Espacements */
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+
+    /* Bordures */
+    --border-radius: 8px;
+    --border-color: #E0E0E0;
+
+    /* TODO: Ajouter des variables pour les ombres, les états hover, etc. */
+}
