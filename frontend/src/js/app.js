@@ -1,6 +1,7 @@
-```javascript
 // Scripts globaux
 import { calculateBudget } from './modules/budgetCalculator.js';
+import { initChecklists } from './modules/checklistManager.js';
+import { initParcours } from './modules/parcours.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('GoCanada - Algérie app initialized');
@@ -8,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initMobileMenu();
     initBudgetSimulator();
+    initChecklists();
+    initParcours(); // Initialisation de l'accordéon parcours
 });
 
 /**
@@ -79,8 +82,8 @@ function initBudgetSimulator() {
         const result = calculateBudget(data);
 
         // Affichage des résultats
-        document.getElementById('result-monthly').textContent = `${ result.totalMensuel.toLocaleString('fr-CA') } $CAD`;
-        document.getElementById('result-annual').textContent = `${ result.totalAnnuel.toLocaleString('fr-CA') } $CAD`;
+        document.getElementById('result-monthly').textContent = `${result.totalMensuel.toLocaleString('fr-CA')} $CAD`;
+        document.getElementById('result-annual').textContent = `${result.totalAnnuel.toLocaleString('fr-CA')} $CAD`;
         document.getElementById('result-comment').textContent = result.commentaire;
 
         // Afficher la section résultats si elle était cachée
@@ -102,4 +105,3 @@ function initBudgetSimulator() {
         });
     }
 }
-```

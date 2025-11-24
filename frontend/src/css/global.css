@@ -61,243 +61,257 @@ p {
 
 /* --- Layout --- */
 .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
 
-    /* --- Reset & Base --- */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+/* --- Header & Navigation --- */
+.site-header {
+    background-color: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-sm) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
 
-    body {
-        font-family: var(--font-family-base);
-        background-color: var(--color-bg-body);
-        color: var(--color-text-main);
-        line-height: 1.6;
-        font-size: var(--font-size-base);
-        -webkit-font-smoothing: antialiased;
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.nav-logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.03em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo span.accent-red {
+    color: var(--color-accent-red);
+    margin: 0 4px;
+}
+
+/* Menu Desktop */
+.main-nav {
+    display: block;
+}
+
+.nav-list {
+    display: flex;
+    gap: var(--space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+}
+
+.nav-link.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-accent-red);
+}
+
+/* Bouton Burger (Mobile) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-primary);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* --- Main Content --- */
+main {
+    flex: 1;
+    padding: var(--space-xl) 0;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--color-bg-footer);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-lg) 0;
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+/* --- Checklists --- */
+.checklist-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.checklist-items li {
+    margin-bottom: var(--space-sm);
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-container:hover .checkmark {
+    border-color: var(--color-primary);
+}
+
+.checkbox-container input:checked~.checkmark {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkmark:after {
+    content: "";
+    display: none;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-container input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkbox-container input:checked~span:last-child {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+}
+
+.btn-reset {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.btn-reset:hover {
+    color: var(--color-accent-red);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .menu-toggle {
         display: flex;
-        flex-direction: column;
-        min-height: 100vh;
     }
 
-    a {
-        text-decoration: none;
-        color: inherit;
-        transition: color 0.2s ease;
-    }
-
-    ul {
-        list-style: none;
-    }
-
-    /* --- Typographie --- */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        color: var(--color-primary);
-        font-weight: 700;
-        line-height: 1.2;
-        margin-bottom: var(--space-sm);
-    }
-
-    h1 {
-        font-size: var(--font-size-h1);
-        letter-spacing: -0.02em;
-    }
-
-    h2 {
-        font-size: var(--font-size-h2);
-        letter-spacing: -0.01em;
-    }
-
-    h3 {
-        font-size: var(--font-size-h3);
-    }
-
-    p {
-        margin-bottom: var(--space-md);
-        color: var(--color-text-muted);
-    }
-
-    /* --- Layout --- */
-    .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 var(--space-md);
-    }
-
-    /* --- Header & Navigation --- */
-    .site-header {
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
         background-color: var(--color-bg-card);
         border-bottom: 1px solid var(--color-border);
-        padding: var(--space-sm) 0;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--shadow-md);
+        padding: var(--space-md);
+        animation: slideDown 0.3s ease-out;
     }
 
-    .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        /* Pour le positionnement du menu mobile */
-    }
-
-    .nav-logo {
-        font-size: 1.25rem;
-        font-weight: 800;
-        color: var(--color-primary);
-        letter-spacing: -0.03em;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-    }
-
-    .nav-logo span.accent-red {
-        color: var(--color-accent-red);
-        margin: 0 4px;
-    }
-
-    /* Menu Desktop */
-    .main-nav {
+    .main-nav.is-open {
         display: block;
     }
 
     .nav-list {
-        display: flex;
-        gap: var(--space-md);
-        list-style: none;
-        margin: 0;
-        padding: 0;
+        flex-direction: column;
+        gap: var(--space-sm);
+        align-items: center;
     }
 
     .nav-link {
-        font-weight: 500;
-        font-size: var(--font-size-sm);
-        color: var(--color-text-muted);
-        padding: 0.5rem 0;
-        border-bottom: 2px solid transparent;
-        transition: color 0.2s, border-color 0.2s;
-        text-decoration: none;
-    }
-
-    .nav-link:hover {
-        color: var(--color-primary);
-    }
-
-    .nav-link.active {
-        color: var(--color-primary);
-        border-bottom-color: var(--color-accent-red);
-    }
-
-    /* Bouton Burger (Mobile) */
-    .menu-toggle {
-        display: none;
-        /* Caché sur desktop */
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 21px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        z-index: 101;
-    }
-
-    .menu-toggle span {
         display: block;
+        padding: var(--space-sm) 0;
         width: 100%;
-        height: 3px;
-        background-color: var(--color-primary);
-        border-radius: 3px;
-        transition: all 0.3s ease;
-    }
-
-    /* --- Main Content --- */
-    main {
-        flex: 1;
-        /* Pousse le footer vers le bas */
-        padding: var(--space-xl) 0;
-    }
-
-    /* --- Footer --- */
-    footer {
-        background-color: var(--color-bg-footer);
-        border-top: 1px solid var(--color-border);
-        padding: var(--space-lg) 0;
         text-align: center;
-        font-size: var(--font-size-sm);
-        color: var(--color-text-muted);
     }
 
-    /* --- Mobile Responsiveness --- */
-    @media (max-width: 768px) {
-        .menu-toggle {
-            display: flex;
-        }
-
-        .main-nav {
-            display: none;
-            /* Caché par défaut sur mobile */
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background-color: var(--color-bg-card);
-            border-bottom: 1px solid var(--color-border);
-            box-shadow: var(--shadow-md);
-            padding: var(--space-md);
-            animation: slideDown 0.3s ease-out;
-        }
-
-        .main-nav.is-open {
-            display: block;
-        }
-
-        .nav-list {
-            flex-direction: column;
-            gap: var(--space-sm);
-            align-items: center;
-        }
-
-        .nav-link {
-            display: block;
-            padding: var(--space-sm) 0;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* Animation simple pour le menu */
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Transformation du burger en croix (optionnel, simple pour l'instant) */
-        .menu-toggle.is-active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-        }
-
-        .menu-toggle.is-active span:nth-child(2) {
+    @keyframes slideDown {
+        from {
             opacity: 0;
+            transform: translateY(-10px);
         }
 
-        .menu-toggle.is-active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
+
+    .menu-toggle.is-active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-toggle.is-active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.is-active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
