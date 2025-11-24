@@ -1,10 +1,13 @@
+```javascript
 // Scripts globaux
+import { calculateBudget } from './modules/budgetCalculator.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('GoCanada - Algérie app initialized');
 
     initNavigation();
     initMobileMenu();
+    initBudgetSimulator();
 });
 
 /**
@@ -49,3 +52,54 @@ function initMobileMenu() {
         });
     }
 }
+
+/**
+ * Initialise le simulateur de budget si on est sur la page budget.html
+ */
+function initBudgetSimulator() {
+    const form = document.getElementById('budget-form');
+    const resultsSection = document.getElementById('budget-results');
+
+    if (!form) return; // On n'est pas sur la page budget
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Récupération des données
+        const formData = new FormData(form);
+        const data = {
+            tuition: formData.get('tuition'),
+            housing: formData.get('housing'),
+            food: formData.get('food'),
+            transport: formData.get('transport'),
+            other: formData.get('other')
+        };
+
+        // Calcul
+        const result = calculateBudget(data);
+
+        // Affichage des résultats
+        document.getElementById('result-monthly').textContent = `${ result.totalMensuel.toLocaleString('fr-CA') } $CAD`;
+        document.getElementById('result-annual').textContent = `${ result.totalAnnuel.toLocaleString('fr-CA') } $CAD`;
+        document.getElementById('result-comment').textContent = result.commentaire;
+
+        // Afficher la section résultats si elle était cachée
+        resultsSection.style.display = 'block';
+
+        // Scroll vers les résultats sur mobile pour une meilleure UX
+        if (window.innerWidth < 768) {
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    // Bouton Reset
+    const resetButton = document.getElementById('reset-budget');
+    if (resetButton) {
+        resetButton.addEventListener('click', () => {
+            form.reset();
+            resultsSection.style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+}
+```
