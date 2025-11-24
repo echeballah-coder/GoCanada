@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, '../frontend/public')));
 // This is necessary because we are not using a bundler yet.
 app.use('/src', express.static(path.join(__dirname, '../frontend/src')));
 
-// API Routes placeholder
+// API Routes
 app.use('/api', routes);
 
 // Fallback for SPA (if we move to client-side routing later, for now just basic static serving)

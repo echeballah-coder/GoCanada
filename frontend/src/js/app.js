@@ -2,6 +2,7 @@
 import { calculateBudget } from './modules/budgetCalculator.js';
 import { initChecklists } from './modules/checklistManager.js';
 import { initParcours } from './modules/parcours.js';
+import { initContactForm } from './modules/contact.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('GoCanada - Algérie app initialized');
@@ -10,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initBudgetSimulator();
     initChecklists();
-    initParcours(); // Initialisation de l'accordéon parcours
+    initParcours();
+    initContactForm(); // Initialisation du formulaire de contact
 });
 
 /**
