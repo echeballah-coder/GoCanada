@@ -56,19 +56,6 @@ body {
 }
 
 .nav-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-text-main);
-    text-decoration: none;
-}
-
-.accent-red {
-    color: var(--color-primary);
-}
-
-/* Navigation Desktop */
-.main-nav {
-    display: flex;
     align-items: center;
 }
 
@@ -299,11 +286,236 @@ footer {
     border: none;
     color: var(--color-text-muted);
     font-size: 0.9rem;
-    cursor: pointer;
-    text-decoration: underline;
-    padding: 0;
-}
 
-.btn-reset:hover {
-    color: var(--color-primary);
-}
+    4. Menu Mobile (Burger)==========================================*/ .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+    }
+
+    .menu-toggle span {
+        width: 100%;
+        height: 3px;
+        background-color: var(--color-text-main);
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Animation Burger -> Croix */
+    .menu-toggle.is-active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-toggle.is-active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.is-active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* Responsive Mobile */
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: flex;
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background-color: var(--color-bg-card);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            justify-content: center;
+            transition: right 0.3s ease-in-out;
+            padding: 2rem;
+        }
+
+        .main-nav.is-open {
+            right: 0;
+        }
+
+        .nav-list {
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-link {
+            font-size: 1.2rem;
+        }
+    }
+
+    /* ==========================================
+   5. Footer
+   ========================================== */
+    footer {
+        background-color: var(--color-text-main);
+        color: var(--color-text-light);
+        padding: var(--spacing-lg) 0;
+        text-align: center;
+        margin-top: auto;
+    }
+
+    /* ==========================================
+   6. Utilitaires
+   ========================================== */
+    .text-center {
+        text-align: center;
+    }
+
+    .mt-sm {
+        margin-top: var(--spacing-sm);
+    }
+
+    .mt-md {
+        margin-top: var(--spacing-md);
+    }
+
+    .mt-lg {
+        margin-top: var(--spacing-lg);
+    }
+
+    /* Grilles Responsive */
+    .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+    }
+
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+    }
+
+    /* Checkbox Custom (Checklists) */
+    .checklist-items {
+        list-style: none;
+        padding: 0;
+    }
+
+    .checklist-items li {
+        margin-bottom: 0.8rem;
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1rem;
+        user-select: none;
+        position: relative;
+        padding-left: 35px;
+    }
+
+    .checkbox-container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 24px;
+        width: 24px;
+        background-color: var(--color-bg-input);
+        border: 2px solid var(--color-border);
+        border-radius: 4px;
+        transition: all 0.2s ease;
+    }
+
+    .checkbox-container:hover input~.checkmark {
+        background-color: #e9ecef;
+    }
+
+    .checkbox-container input:checked~.checkmark {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .checkbox-container input:checked~.checkmark:after {
+        display: block;
+    }
+
+    .checkbox-container .checkmark:after {
+        left: 8px;
+        top: 4px;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    .checkbox-container input:checked~span:not(.checkmark) {
+        text-decoration: line-through;
+        color: var(--color-text-muted);
+    }
+
+    .btn-reset {
+        background: none;
+        border: none;
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+        cursor: pointer;
+        text-decoration: underline;
+        padding: 0;
+    }
+
+    .btn-reset:hover {
+        color: var(--color-primary);
+    }
+
+    /* ==========================================
+   7. Scroll Reveal Animations
+   ========================================== */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Délais pour effet en cascade */
+    .fade-in-delay-1 {
+        transition-delay: 0.1s;
+    }
+
+    .fade-in-delay-2 {
+        transition-delay: 0.2s;
+    }
+
+    .fade-in-delay-3 {
+        transition-delay: 0.3s;
+    }
+
+    .fade-in-delay-4 {
+        transition-delay: 0.4s;
+    }

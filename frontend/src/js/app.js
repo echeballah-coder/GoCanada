@@ -8,6 +8,8 @@ import { calculateBudget } from './modules/budgetCalculator.js';
 import { initChecklists } from './modules/checklistManager.js';
 import { initParcours } from './modules/parcours.js';
 import { initContactForm } from './modules/contact.js';
+import { initThemeToggle } from './modules/theme.js';
+import { initScrollReveal } from './modules/scrollReveal.js';
 
 /**
  * Initialisation de l'application au chargement du DOM.
@@ -16,6 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 GoCanada – Algérie : Application Démarrée');
 
     try {
+        // Initialiser le thème (Dark Mode)
+        initThemeToggle();
+
+        // Initialiser les animations de scroll
+        initScrollReveal();
+
         initNavigation();
         initMobileMenu();
 
