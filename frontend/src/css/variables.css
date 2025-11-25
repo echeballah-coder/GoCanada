@@ -1,71 +1,74 @@
-:root {
-    /* --- Palette de Couleurs --- */
+/**
+ * @file variables.css
+ * @description Définition des variables CSS globales (Design System).
+ * Contient les couleurs, typographies, espacements et ombres.
+ */
 
-    /* Fond & Surfaces */
-    --color-bg-body: #FDFDFB;
-    /* Blanc cassé très doux / Beige clair */
-    --color-bg-card: #FFFFFF;
-    /* Blanc pur pour les cartes */
-    --color-bg-footer: #F4F4F2;
-    /* Légèrement plus foncé que le body */
-    --color-bg-input: #F9FAFB;
-    /* Fond des champs de formulaire */
+:root {
+    /* ==========================================
+       1. Palette de Couleurs
+       ========================================== */
 
     /* Couleurs Principales */
-    --color-primary: #0F4C81;
-    /* Bleu "Classic Blue" - Confiance & Éducation */
-    --color-primary-light: #1E6099;
-    /* Variante plus claire pour hover */
-    --color-primary-dark: #083055;
-    /* Variante plus foncée */
+    --color-primary: #D80621;
+    /* Rouge Canada */
+    --color-primary-dark: #a30419;
+    /* Rouge foncé (Hover) */
+    --color-accent: #FFC107;
+    /* Jaune (Accentuation) */
 
-    /* Accents (Subtils) */
-    --color-accent-red: #E63946;
-    /* Touche Canada (Rouge vif mais moderne) */
-    --color-accent-green: #2A9D8F;
-    /* Touche Algérie (Vert canard moderne) */
+    /* Couleurs de Fond */
+    --color-bg-main: #f8f9fa;
+    /* Fond de page léger */
+    --color-bg-card: #ffffff;
+    /* Fond des cartes */
+    --color-bg-input: #f1f3f5;
+    /* Fond des champs de formulaire */
 
-    /* Texte */
-    --color-text-main: #1D1D1F;
-    /* Noir adouci */
-    --color-text-muted: #6E6E73;
-    /* Gris pour sous-titres */
-    --color-text-light: #FFFFFF;
-    /* Texte sur fond foncé */
+    /* Couleurs de Texte */
+    --color-text-main: #212529;
+    /* Texte principal (presque noir) */
+    --color-text-muted: #6c757d;
+    /* Texte secondaire (gris) */
+    --color-text-light: #ffffff;
+    /* Texte sur fond sombre */
 
     /* Bordures */
-    --color-border: #E5E5E5;
-    --color-border-focus: #0F4C81;
+    --color-border: #dee2e6;
+    /* Gris clair pour bordures */
 
-    /* --- Typographie --- */
-    --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* ==========================================
+       2. Typographie
+       ========================================== */
+    --font-family-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
     --font-size-base: 16px;
-    --font-size-sm: 0.875rem;
-    --font-size-lg: 1.125rem;
-    --font-size-h1: 2.5rem;
-    --font-size-h2: 2rem;
-    --font-size-h3: 1.5rem;
+    --line-height-base: 1.6;
 
-    /* --- Espacements --- */
-    --space-xs: 0.5rem;
+    /* ==========================================
+       3. Espacements (Spacing System)
+       ========================================== */
+    --spacing-xs: 0.5rem;
     /* 8px */
-    --space-sm: 1rem;
+    --spacing-sm: 1rem;
     /* 16px */
-    --space-md: 1.5rem;
+    --spacing-md: 1.5rem;
     /* 24px */
-    --space-lg: 2.5rem;
-    /* 40px */
-    --space-xl: 4rem;
-    /* 64px */
+    --spacing-lg: 2rem;
+    /* 32px */
+    --spacing-xl: 3rem;
+    /* 48px */
 
-    /* --- Formes & Effets --- */
-    --border-radius-sm: 4px;
-    --border-radius-md: 8px;
-    --border-radius-lg: 12px;
+    /* ==========================================
+       4. Effets & UI
+       ========================================== */
+    --radius-md: 8px;
+    /* Arrondi standard */
+    --radius-lg: 12px;
+    /* Arrondi large */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-
-    /* TODO: Ajouter des variables pour les états (success, warning, error) plus tard */
+    /* Transitions */
+    --transition-fast: 0.2s ease;
 }

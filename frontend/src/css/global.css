@@ -1,138 +1,111 @@
-/* --- Reset & Base --- */
+/**
+ * @file global.css
+ * @description Styles globaux, Reset CSS et Layout principal.
+ */
+
+/* ==========================================
+   1. Reset & Base
+   ========================================== */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     font-family: var(--font-family-base);
-    background-color: var(--color-bg-body);
-    color: var(--color-text-main);
-    line-height: 1.6;
     font-size: var(--font-size-base);
-    -webkit-font-smoothing: antialiased;
+    line-height: var(--line-height-base);
+    color: var(--color-text-main);
+    background-color: var(--color-bg-main);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.2s ease;
-}
-
-ul {
-    list-style: none;
-}
-
-/* --- Typographie --- */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: var(--color-primary);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: var(--space-sm);
-}
-
-h1 {
-    font-size: var(--font-size-h1);
-    letter-spacing: -0.02em;
-}
-
-h2 {
-    font-size: var(--font-size-h2);
-    letter-spacing: -0.01em;
-}
-
-h3 {
-    font-size: var(--font-size-h3);
-}
-
-p {
-    margin-bottom: var(--space-md);
-    color: var(--color-text-muted);
-}
-
-/* --- Layout --- */
+/* ==========================================
+   2. Layout (Container & Sections)
+   ========================================== */
 .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--space-md);
+    padding: 0 var(--spacing-sm);
 }
 
-/* --- Header & Navigation --- */
+.section {
+    padding: var(--spacing-xl) 0;
+}
+
+/* ==========================================
+   3. Header & Navigation
+   ========================================== */
 .site-header {
     background-color: var(--color-bg-card);
-    border-bottom: 1px solid var(--color-border);
-    padding: var(--space-sm) 0;
+    box-shadow: var(--shadow-sm);
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    padding: var(--spacing-sm) 0;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
 }
 
 .nav-logo {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--color-primary);
-    letter-spacing: -0.03em;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-main);
     text-decoration: none;
+}
+
+.accent-red {
+    color: var(--color-primary);
+}
+
+/* Navigation Desktop */
+.main-nav {
     display: flex;
     align-items: center;
 }
 
-.nav-logo span.accent-red {
-    color: var(--color-accent-red);
-    margin: 0 4px;
-}
-
-/* Menu Desktop */
-.main-nav {
-    display: block;
-}
-
 .nav-list {
     display: flex;
-    gap: var(--space-md);
     list-style: none;
-    margin: 0;
-    padding: 0;
+    gap: var(--spacing-md);
 }
 
 .nav-link {
-    font-weight: 500;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
-    padding: 0.5rem 0;
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
     text-decoration: none;
+    color: var(--color-text-main);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+    padding: 0.5rem 0;
+    position: relative;
 }
 
-.nav-link:hover {
-    color: var(--color-primary);
-}
-
+.nav-link:hover,
 .nav-link.active {
     color: var(--color-primary);
-    border-bottom-color: var(--color-accent-red);
 }
 
-/* Bouton Burger (Mobile) */
+/* Indicateur actif (soulignement) */
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+}
+
+/* ==========================================
+   4. Menu Mobile (Burger)
+   ========================================== */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -143,52 +116,128 @@ p {
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 101;
+    z-index: 1001;
 }
 
 .menu-toggle span {
-    display: block;
     width: 100%;
     height: 3px;
-    background-color: var(--color-primary);
+    background-color: var(--color-text-main);
     border-radius: 3px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
-/* --- Main Content --- */
-main {
-    flex: 1;
-    padding: var(--space-xl) 0;
+/* Animation Burger -> Croix */
+.menu-toggle.is-active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
 }
 
-/* --- Footer --- */
+.menu-toggle.is-active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.is-active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--color-bg-card);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        justify-content: center;
+        transition: right 0.3s ease-in-out;
+        padding: 2rem;
+    }
+
+    .main-nav.is-open {
+        right: 0;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-lg);
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+    }
+}
+
+/* ==========================================
+   5. Footer
+   ========================================== */
 footer {
-    background-color: var(--color-bg-footer);
-    border-top: 1px solid var(--color-border);
-    padding: var(--space-lg) 0;
+    background-color: var(--color-text-main);
+    color: var(--color-text-light);
+    padding: var(--spacing-lg) 0;
     text-align: center;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
+    margin-top: auto;
 }
 
-/* --- Checklists --- */
+/* ==========================================
+   6. Utilitaires
+   ========================================== */
+.text-center {
+    text-align: center;
+}
+
+.mt-sm {
+    margin-top: var(--spacing-sm);
+}
+
+.mt-md {
+    margin-top: var(--spacing-md);
+}
+
+.mt-lg {
+    margin-top: var(--spacing-lg);
+}
+
+/* Grilles Responsive */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+/* Checkbox Custom (Checklists) */
 .checklist-items {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 .checklist-items li {
-    margin-bottom: var(--space-sm);
+    margin-bottom: 0.8rem;
 }
 
 .checkbox-container {
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-size: 0.95rem;
-    color: var(--color-text-main);
+    font-size: 1rem;
     user-select: none;
+    position: relative;
+    padding-left: 35px;
 }
 
 .checkbox-container input {
@@ -200,21 +249,19 @@ footer {
 }
 
 .checkmark {
-    height: 20px;
-    width: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
     background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
+    border: 2px solid var(--color-border);
     border-radius: 4px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: all 0.2s ease;
-    flex-shrink: 0;
 }
 
-.checkbox-container:hover .checkmark {
-    border-color: var(--color-primary);
+.checkbox-container:hover input~.checkmark {
+    background-color: #e9ecef;
 }
 
 .checkbox-container input:checked~.checkmark {
@@ -224,19 +271,25 @@ footer {
 
 .checkmark:after {
     content: "";
+    position: absolute;
     display: none;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
 }
 
 .checkbox-container input:checked~.checkmark:after {
     display: block;
 }
 
-.checkbox-container input:checked~span:last-child {
+.checkbox-container .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-container input:checked~span:not(.checkmark) {
     text-decoration: line-through;
     color: var(--color-text-muted);
 }
@@ -245,73 +298,12 @@ footer {
     background: none;
     border: none;
     color: var(--color-text-muted);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     cursor: pointer;
     text-decoration: underline;
     padding: 0;
 }
 
 .btn-reset:hover {
-    color: var(--color-accent-red);
-}
-
-/* --- Mobile Responsiveness --- */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
-
-    .main-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--color-bg-card);
-        border-bottom: 1px solid var(--color-border);
-        box-shadow: var(--shadow-md);
-        padding: var(--space-md);
-        animation: slideDown 0.3s ease-out;
-    }
-
-    .main-nav.is-open {
-        display: block;
-    }
-
-    .nav-list {
-        flex-direction: column;
-        gap: var(--space-sm);
-        align-items: center;
-    }
-
-    .nav-link {
-        display: block;
-        padding: var(--space-sm) 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .menu-toggle.is-active span:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-    }
-
-    .menu-toggle.is-active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.is-active span:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-    }
+    color: var(--color-primary);
 }

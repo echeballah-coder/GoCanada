@@ -5,62 +5,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoCanada – Algérie | Accueil</title>
-    d'installation.</p>
-    <div class="mt-md">
-        <a href="parcours.html" class="btn btn-primary">Commencer le parcours</a>
-    </div>
-    </section>
+    <link rel="stylesheet" href="/src/css/variables.css">
+    <link rel="stylesheet" href="/src/css/global.css">
+    <link rel="stylesheet" href="/src/css/components.css">
+    <script type="module" src="/src/js/app.js"></script>
+    <style>
+        /* Styles spécifiques à la page d'accueil pour le Hero */
+        .hero-section {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-main) 100%);
+            border-radius: var(--radius-lg);
+            margin-bottom: 3rem;
+            border: 1px solid var(--color-border);
+        }
 
-    <section id="features" class="section">
-        <h2 class="section-title">Pourquoi utiliser GoCanada ?</h2>
-        <div class="grid-2">
-            <div class="card">
-                <h3>Information Fiable</h3>
-                <p>Basé sur les sources officielles (IRCC, MIFI) et adapté à la réalité algérienne. Fini les
-                    rumeurs, place aux faits.</p>
-            </div>
-            <div class="card">
-                <h3>Outils Pratiques</h3>
-                <p>Simulateur de budget et checklists personnalisées pour ne rien oublier dans vos démarches
-                    administratives.</p>
-            </div>
-        </div>
-    </section>
-    <!DOCTYPE html>
-    <html lang="fr">
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>GoCanada – Algérie | Accueil</title>
-        d'installation.</p>
-        <div class="mt-md">
-            <a href="parcours.html" class="btn btn-primary">Commencer le parcours</a>
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .feature-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: var(--color-bg-input);
+            padding: 1rem;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="nav-logo">GoCanada <span class="accent-red">–</span> Algérie</a>
+
+            <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Accueil</a></li>
+                    <li><a href="parcours.html" class="nav-link">Parcours</a></li>
+                    <li><a href="checklists.html" class="nav-link">Checklists</a></li>
+                    <li><a href="budget.html" class="nav-link">Budget</a></li>
+                    <li><a href="ressources.html" class="nav-link">Ressources</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">Votre rêve canadien commence ici.</h1>
+            <p class="hero-subtitle">La plateforme tout-en-un pour les étudiants algériens : guide étape par étape,
+                simulateur de budget, checklists interactives et plus encore.</p>
+            <div>
+                <a href="parcours.html" class="btn btn-primary btn-lg">Commencer mon parcours</a>
+                <a href="contact.html" class="btn btn-secondary btn-lg" style="margin-left: 1rem;">Nous contacter</a>
+            </div>
         </section>
 
-        <section id="features" class="section">
-            <h2 class="section-title">Pourquoi utiliser GoCanada ?</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Information Fiable</h3>
-                    <p>Basé sur les sources officielles (IRCC, MIFI) et adapté à la réalité algérienne. Fini les
-                        rumeurs, place aux faits.</p>
+        <!-- Features Grid -->
+        <section class="section">
+            <h2 class="section-title text-center">Tout ce dont vous avez besoin</h2>
+            <div class="grid-3">
+
+                <!-- Parcours -->
+                <a href="parcours.html" class="card feature-card">
+                    <div>
+                        <span class="feature-icon">🚀</span>
+                        <h3>Guide Interactif</h3>
+                        <p>Suivez les 8 étapes clés de votre projet, de l'admission à l'arrivée au Canada. Ne manquez
+                            aucune étape critique.</p>
+                    </div>
+                    <div class="mt-md text-primary font-bold">Voir le parcours &rarr;</div>
+                </a>
+
+                <!-- Checklists -->
+                <a href="checklists.html" class="card feature-card">
+                    <div>
+                        <span class="feature-icon">✅</span>
+                        <h3>Checklists Intelligentes</h3>
+                        <p>Listes de documents pour le CAQ, le Permis d'Études et le départ. Vos progrès sont
+                            sauvegardés automatiquement.</p>
+                    </div>
+                    <div class="mt-md text-primary font-bold">Gérer mes documents &rarr;</div>
+                </a>
+
+                <!-- Budget -->
+                <a href="budget.html" class="card feature-card">
+                    <div>
+                        <span class="feature-icon">💰</span>
+                        <h3>Simulateur de Budget</h3>
+                        <p>Estimez précisément vos frais de scolarité et de subsistance pour votre première année au
+                            Canada.</p>
+                    </div>
+                    <div class="mt-md text-primary font-bold">Calculer mon budget &rarr;</div>
+                </a>
+
+                <!-- Ressources -->
+                <a href="ressources.html" class="card feature-card">
+                    <div>
+                        <span class="feature-icon">📚</span>
+                        <h3>Ressources Officielles</h3>
+                        <p>Accédez directement aux sites de l'IRCC, du MIFI et téléchargez les guides officiels sans
+                            chercher partout.</p>
+                    </div>
+                    <div class="mt-md text-primary font-bold">Consulter les ressources &rarr;</div>
+                </a>
+
+                <!-- Contact -->
+                <a href="contact.html" class="card feature-card">
+                    <div>
+                        <span class="feature-icon">📩</span>
+                        <h3>Assistance & Support</h3>
+                        <p>Une question spécifique ? Besoin d'aide pour comprendre une procédure ? Contactez notre
+                            équipe.</p>
+                    </div>
+                    <div class="mt-md text-primary font-bold">Nous contacter &rarr;</div>
+                </a>
+
+                <!-- Coming Soon / Community -->
+                <div class="card feature-card" style="opacity: 0.7; cursor: default;">
+                    <div>
+                        <span class="feature-icon">🤝</span>
+                        <h3>Communauté (Bientôt)</h3>
+                        <p>Rejoignez d'autres étudiants algériens, partagez vos expériences et trouvez des futurs
+                            colocataires.</p>
+                    </div>
+                    <div class="mt-md text-muted">Bientôt disponible</div>
                 </div>
-                <div class="card">
-                    <h3>Outils Pratiques</h3>
-                    <p>Simulateur de budget et checklists personnalisées pour ne rien oublier dans vos démarches
-                        administratives.</p>
-                </div>
+
             </div>
         </section>
-        </main>
+    </main>
 
-        <footer>
-            <p>GoCanada-Algérie – Plateforme d’accompagnement pour étudiants algériens – © 2025</p>
-        </footer>
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 GoCanada – Algérie. Projet étudiant à but informatif.</p>
+        </div>
+    </footer>
+</body>
 
-        <script type="module" src="/src/js/app.js"></script>
-        </body>
-
-    </html>
+</html>

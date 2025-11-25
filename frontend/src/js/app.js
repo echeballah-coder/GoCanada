@@ -1,22 +1,37 @@
-// Scripts globaux
+/**
+ * @file app.js
+ * @description Point d'entrée principal du JavaScript Frontend.
+ * Orchestre l'initialisation des modules et gère la navigation globale.
+ */
+
 import { calculateBudget } from './modules/budgetCalculator.js';
 import { initChecklists } from './modules/checklistManager.js';
 import { initParcours } from './modules/parcours.js';
 import { initContactForm } from './modules/contact.js';
 
+/**
+ * Initialisation de l'application au chargement du DOM.
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('GoCanada - Algérie app initialized');
+    console.log('🚀 GoCanada – Algérie : Application Démarrée');
 
-    initNavigation();
-    initMobileMenu();
-    initBudgetSimulator();
-    initChecklists();
-    initParcours();
-    initContactForm(); // Initialisation du formulaire de contact
+    try {
+        initNavigation();
+        initMobileMenu();
+
+        // Initialisation conditionnelle des modules (ils vérifient eux-mêmes s'ils doivent s'activer)
+        initBudgetSimulator();
+        initChecklists();
+        initParcours();
+        initContactForm();
+
+    } catch (error) {
+        console.error("Erreur critique lors de l'initialisation de l'application :", error);
+    }
 });
 
 /**
- * Gère l'état actif des liens de navigation
+ * Gère l'état actif des liens de navigation (Soulignement du lien courant).
  */
 function initNavigation() {
     const currentPath = window.location.pathname;
@@ -31,14 +46,16 @@ function initNavigation() {
         // Si le lien correspond à la page actuelle
         if (linkHref === pageName || (pageName === '' && linkHref === 'index.html')) {
             link.classList.add('active');
+            link.setAttribute('aria-current', 'page'); // Accessibilité
         } else {
             link.classList.remove('active');
+            link.removeAttribute('aria-current');
         }
     });
 }
 
 /**
- * Gère l'ouverture/fermeture du menu mobile
+ * Gère l'ouverture/fermeture du menu mobile (Burger).
  */
 function initMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
@@ -55,11 +72,20 @@ function initMobileMenu() {
             // Update a11y attribute
             menuToggle.setAttribute('aria-expanded', !isExpanded);
         });
+
+        // Fermer le menu si on clique en dehors (Optionnel mais UX friendly)
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !menuToggle.contains(e.target) && mainNav.classList.contains('is-open')) {
+                menuToggle.classList.remove('is-active');
+                mainNav.classList.remove('is-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
     }
 }
 
 /**
- * Initialise le simulateur de budget si on est sur la page budget.html
+ * Initialise le simulateur de budget si le formulaire est présent.
  */
 function initBudgetSimulator() {
     const form = document.getElementById('budget-form');

@@ -1,5 +1,6 @@
 /**
- * Gestionnaire du formulaire de contact
+ * @file modules/contact.js
+ * @description Gestion du formulaire de contact (Validation, Envoi AJAX, Feedback UI).
  */
 
 export function initContactForm() {
@@ -16,10 +17,12 @@ export function initContactForm() {
         const data = Object.fromEntries(formData.entries());
         const submitBtn = form.querySelector('button[type="submit"]');
 
-        // Désactiver le bouton
+        // Désactiver le bouton pour éviter les doubles soumissions
         submitBtn.disabled = true;
         submitBtn.textContent = 'Envoi en cours...';
-        messageDiv.style.display = 'none';
+
+        // Masquer le message précédent
+        if (messageDiv) messageDiv.style.display = 'none';
 
         try {
             const response = await fetch('/api/contact', {
@@ -37,13 +40,19 @@ export function initContactForm() {
                 showMessage(messageDiv, result.message, 'success');
                 form.reset();
             } else {
-                // Erreur API
+                // Erreur API (Validation ou autre)
                 showMessage(messageDiv, result.message || "Une erreur est survenue.", 'error');
+
+                // Afficher les erreurs de validation spécifiques si disponibles
+                if (result.errors && Array.isArray(result.errors)) {
+                    console.warn("Erreurs de validation:", result.errors);
+                    // On pourrait les afficher sous chaque champ ici
+                }
             }
 
         } catch (error) {
-            console.error('Erreur:', error);
-            showMessage(messageDiv, "Impossible de contacter le serveur. Veuillez réessayer plus tard.", 'error');
+            console.error('Erreur Réseau:', error);
+            showMessage(messageDiv, "Impossible de contacter le serveur. Vérifiez votre connexion.", 'error');
         } finally {
             // Réactiver le bouton
             submitBtn.disabled = false;
@@ -52,7 +61,15 @@ export function initContactForm() {
     });
 }
 
+/**
+ * Affiche un message de feedback à l'utilisateur.
+ * @param {HTMLElement} element - L'élément DOM où afficher le message.
+ * @param {string} text - Le texte du message.
+ * @param {string} type - Le type de message ('success' ou 'error').
+ */
 function showMessage(element, text, type) {
+    if (!element) return;
+
     element.textContent = text;
     element.style.display = 'block';
 
