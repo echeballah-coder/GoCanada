@@ -63,6 +63,42 @@
        ========================================== */
    --radius-md: 8px;
    /* Arrondi standard */
+   --radius-lg: 12px;
+   /* Arrondi large */
+   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+   /* Transitions */
+   --transition-fast: 0.2s ease;
+}
+
+/* ==========================================
+   Dark Theme Variables
+   ========================================== */
+[data-theme="dark"] {
+   /* Couleurs de Fond (Dark) */
+   --color-bg-main: #0F172A;
+   /* Bleu nuit profond */
+   --color-bg-card: #1E293B;
+   /* Gris ardoise */
+   --color-bg-input: #334155;
+   /* Gris ardoise moyen */
+
+   /* Couleurs de Texte (Dark) */
+   --color-text-main: #F1F5F9;
+   /* Texte clair */
+   --color-text-muted: #94A3B8;
+   /* Gris clair */
+   --color-text-light: #FFFFFF;
+   /* Blanc pur */
+
+   /* Bordures (Dark) */
+   --color-border: #334155;
+   /* Gris plus visible sur fond sombre */
+
+   /* Ajustements pour Primary/Accent (plus lumineux en dark) */
+   --color-primary: #EF4444;
    /**
  * @file variables.css
  * @description Définition des variables CSS globales (Design System).
@@ -136,6 +172,11 @@
 
       /* Transitions */
       --transition-fast: 0.2s ease;
+
+      /* Glassmorphism (Light) */
+      --glass-bg: rgba(255, 255, 255, 0.8);
+      --glass-border: rgba(255, 255, 255, 0.5);
+      --glass-blur: 12px;
    }
 
    /* ==========================================
@@ -174,4 +215,10 @@
       --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
       --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
       --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+
+      /* Glassmorphism (Dark) */
+      --glass-bg: rgba(30, 41, 59, 0.7);
+      /* Gris ardoise semi-transparent */
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --glass-blur: 12px;
    }

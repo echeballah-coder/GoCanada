@@ -42,32 +42,179 @@
     background-color: var(--color-bg-input);
 }
 
-/* Bouton Large */
-.btn-lg {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
+
+/* ==========================================
+   3. Formulaires (Forms)
+   ========================================== */
+form div {
+    margin-bottom: var(--spacing-md);
+}
+
+label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-input);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color var(--transition-fast);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: #fff;
 }
 
 /* ==========================================
-   2. Cartes (Cards)
+   4. Accordéon (Parcours)
    ========================================== */
-.card {
-    background-color: var(--color-bg-card);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--color-border);
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+.parcours-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.card:hover {
+.parcours-step {
+    background-color: var(--color-bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Header de l'étape (clickable) */
+.step-header {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    cursor: pointer;
+    background-color: var(--color-bg-card);
+    transition: background-color 0.2s ease;
+}
+
+.step-header:hover {
+    background-color: #f8f9fa;
+}
+
+.step-number {
+    background-color: var(--color-primary);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.step-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-grow: 1;
+}
+
+.step-icon {
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    transition: transform 0.3s ease;
+}
+
+/* Contenu de l'étape (caché par défaut) */
+.step-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: white;
+}
+
+.step-body {
+    padding: var(--spacing-md);
+    padding-top: 0;
+    border-top: 1px solid transparent;
+    color: var(--color-text-muted);
+}
+
+.step-body ul {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.step-body li {
+    margin-bottom: 0.3rem;
+}
+
+/* État Actif (Ouvert) */
+.parcours-step.active {
+    border-color: var(--color-primary);
     box-shadow: var(--shadow-md);
 }
 
-.card h3 {
-    margin-bottom: var(--spacing-sm);
+.parcours-step.active .step-icon {
+    transform: rotate(45deg);
     color: var(--color-primary);
 }
+
+/**
+ * @file components.css
+ * @description Styles des composants réutilisables (Boutons, Cartes, Formulaires, Accordéon).
+ */
+
+/* ==========================================
+   1. Boutons (Buttons)
+   ========================================== */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+    font-size: 1rem;
+}
+
+/* Bouton Primaire (Rouge) */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Bouton Secondaire (Gris/Outline) */
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-border);
+    color: var(--color-text-main);
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-text-main);
+    background-color: var(--color-bg-input);
+}
+
 
 /* ==========================================
    3. Formulaires (Forms)
@@ -205,4 +352,66 @@ textarea:focus {
 .parcours-step.active .step-body {
     border-top-color: var(--color-bg-input);
     padding-top: var(--spacing-sm);
+}
+
+/* ==========================================
+   5. Barres de Progression (Gamification)
+   ========================================== */
+.progress-container {
+    background-color: var(--color-bg-input);
+    border-radius: 20px;
+    height: 20px;
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    height: 100%;
+    width: 0%;
+    /* Initial width */
+    border-radius: 20px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* Effet de brillance animé sur la barre */
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(45deg,
+            rgba(255, 255, 255, 0) 25%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--color-text-main);
+    z-index: 1;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 }
