@@ -1,73 +1,147 @@
 /**
- * Calcule le budget étudiant basé sur les entrées utilisateur.
- * @param {Object} data - Les données du formulaire (tuition, housing, food, transport, other)
- * @returns {Object} - Résultats calculés (totalMensuel, totalAnnuel, commentaire)
+ * ==========================================================================
+ * Module : budgetCalculator.js
+ * Description : Gère la logique du simulateur de budget.
+ *               - Récupère les entrées utilisateur
+ *               - Calcule les totaux mensuels et annuels
+ *               - Affiche un graphique interactif (Doughnut Chart)
+ *               - Fournit un feedback visuel (Commentaire)
+ * Dépendances : Chart.js (chargé via CDN dans budget.html)
+ * ==========================================================================
  */
-export function calculateBudget(data) {
-    // Conversion sécurisée en nombres (0 si vide ou invalide)
-    const tuition = Number(data.tuition) || 0;
-    const housing = Number(data.housing) || 0;
-    const food = Number(data.food) || 0;
-    const transport = Number(data.transport) || 0;
-    const other = Number(data.other) || 0;
+
+let budgetChartInstance = null; // Stocke l'instance du graphique pour pouvoir le détruire/recréer
+
+/**
+ * Initialise le calculateur de budget.
+ * Attache les écouteurs d'événements au formulaire.
+ */
+export function initBudgetCalculator() {
+    const form = document.getElementById('budget-form');
+    if (!form) return; // Sécurité : on quitte si le formulaire n'existe pas
+
+    // Écouteur sur la soumission du formulaire
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); // Empêche le rechargement de la page
+
+        // Extraction des données du formulaire
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        // Calcul et Affichage
+        const results = calculateBudget(data);
+        displayResults(results, data);
+    });
+
+    // Écouteur sur le bouton "Refaire une simulation"
+    const resetBtn = document.getElementById('reset-budget');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            resetCalculator(form);
+        });
+    }
+}
+
+/**
+ * Calcule le budget total et génère un commentaire.
+ * @param {Object} data - Les données du formulaire (tuition, housing, etc.)
+ * @returns {Object} Les résultats calculés (mensuel, annuel, commentaire)
+ */
+function calculateBudget(data) {
+    // Conversion des entrées en nombres (Float) avec valeur par défaut 0
+    const tuition = parseFloat(data.tuition) || 0;
+    const housing = parseFloat(data.housing) || 0;
+    const food = parseFloat(data.food) || 0;
+    const transport = parseFloat(data.transport) || 0;
+    const other = parseFloat(data.other) || 0;
 
     // Calculs
-    const totalMensuel = housing + food + transport + other;
-    const totalAnnuel = (totalMensuel * 12) + tuition;
+    const monthlyExpenses = housing + food + transport + other;
+    const totalAnnual = tuition + (monthlyExpenses * 12);
 
-    // Détermination du commentaire
+    // Logique métier : Commentaire selon le budget total
     let commentaire = "";
-
-    // Seuils arbitraires basés sur le coût de la vie moyen au Canada (2024-2025)
-    if (totalMensuel < 1000) {
-        commentaire = "⚠️ Budget très serré. Assurez-vous qu'il est réaliste pour votre ville de destination.";
-    } else if (totalMensuel >= 1000 && totalMensuel < 1500) {
-        commentaire = "✅ Budget raisonnable pour un étudiant en colocation.";
-    } else if (totalMensuel >= 1500 && totalMensuel < 2500) {
-        commentaire = "👍 Budget confortable. Vous devriez être à l'aise.";
+    if (totalAnnual < 20000) {
+        commentaire = "⚠️ Budget très serré. Assurez-vous d'avoir des économies supplémentaires ou une bourse.";
+    } else if (totalAnnual < 35000) {
+        commentaire = "✅ Budget réaliste pour une année étudiante standard au Canada.";
     } else {
-        commentaire = "💰 Budget élevé. Vérifiez si vous pouvez économiser sur certains postes.";
+        commentaire = "🌟 Budget confortable. Vous devriez être à l'aise pour vos études.";
     }
 
-    // Mise à jour du graphique si Chart.js est chargé
-    updateChart(housing, food, transport, other, tuition / 12); // On lisse les frais de scolarité sur 12 mois pour le visuel mensuel
+    // Mise à jour du graphique avec les nouvelles données
+    // Note: On divise les frais de scolarité par 12 pour la vue mensuelle du graphique
+    updateChart(housing, food, transport, other, tuition / 12);
 
     return {
-        totalMensuel,
-        totalAnnuel,
-        commentaire
+        totalMensuel: monthlyExpenses,
+        totalAnnuel: totalAnnual,
+        commentaire: commentaire
     };
 }
 
-let budgetChartInstance = null;
+/**
+ * Affiche les résultats dans le DOM et fait défiler la page.
+ * @param {Object} results - Les résultats calculés
+ */
+function displayResults(results) {
+    // Bascule de l'affichage : Cache le formulaire, montre les résultats
+    document.getElementById('budget-form-section').style.display = 'none';
+    const resultsSection = document.getElementById('budget-results');
+    resultsSection.style.display = 'block';
 
+    // Animation de défilement fluide vers les résultats
+    resultsSection.scrollIntoView({ behavior: 'smooth' });
+
+    // Injection des valeurs formatées (ex: 1 200 $CAD)
+    document.getElementById('total-monthly').textContent = `${results.totalMensuel.toLocaleString('fr-DZ')} $CAD`;
+    document.getElementById('total-annual').textContent = `${results.totalAnnuel.toLocaleString('fr-DZ')} $CAD`;
+    document.getElementById('result-comment').textContent = results.commentaire;
+}
+
+/**
+ * Réinitialise le calculateur pour une nouvelle simulation.
+ * @param {HTMLFormElement} form - Le formulaire à reset
+ */
+function resetCalculator(form) {
+    form.reset();
+    document.getElementById('budget-results').style.display = 'none';
+    document.getElementById('budget-form-section').style.display = 'block';
+
+    // Remonter en haut de page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/**
+ * Crée ou met à jour le graphique Chart.js.
+ * @param {number} housing - Logement
+ * @param {number} food - Nourriture
+ * @param {number} transport - Transport
+ * @param {number} other - Autres
+ * @param {number} monthlyTuition - Scolarité (mensualisée)
+ */
 function updateChart(housing, food, transport, other, monthlyTuition) {
     const ctx = document.getElementById('budgetChart');
     if (!ctx) return;
 
-    // Si le graphique existe déjà, on le détruit pour le recréer (ou on met à jour les données)
+    // Si un graphique existe déjà, on le détruit pour éviter les superpositions
     if (budgetChartInstance) {
         budgetChartInstance.destroy();
     }
 
-    // Couleurs du thème
-    const colors = [
-        '#D80621', // Rouge (Logement - souvent le plus gros)
-        '#FFC107', // Jaune (Nourriture)
-        '#2962FF', // Bleu (Transport)
-        '#00C853', // Vert (Autres)
-        '#9E9E9E'  // Gris (Scolarité mensuelle lissée)
-    ];
+    // Palette de couleurs
+    const colors = ['#D80621', '#FFC107', '#2962FF', '#00C853', '#9E9E9E'];
 
+    // Création du nouveau graphique
     budgetChartInstance = new Chart(ctx, {
-        type: 'doughnut',
+        type: 'doughnut', // Type "Beignet"
         data: {
             labels: ['Logement', 'Nourriture', 'Transport', 'Autres', 'Scolarité (mensuel)'],
             datasets: [{
                 data: [housing, food, transport, other, monthlyTuition],
                 backgroundColor: colors,
                 borderWidth: 2,
-                borderColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#1E293B' : '#ffffff'
+                borderColor: getComputedStyle(document.documentElement).getPropertyValue('--color-bg-card').trim()
             }]
         },
         options: {
@@ -77,22 +151,19 @@ function updateChart(housing, food, transport, other, monthlyTuition) {
                 legend: {
                     position: 'bottom',
                     labels: {
-                        color: document.documentElement.getAttribute('data-theme') === 'dark' ? '#F1F5F9' : '#212529',
-                        font: {
-                            family: "'Segoe UI', sans-serif",
-                            size: 12
-                        }
+                        color: getComputedStyle(document.documentElement).getPropertyValue('--color-text-main').trim()
                     }
                 },
                 tooltip: {
                     callbacks: {
+                        // Formatage personnalisé des tooltips (Ajout de "$CAD")
                         label: function (context) {
                             let label = context.label || '';
                             if (label) {
                                 label += ': ';
                             }
                             if (context.parsed !== null) {
-                                label += new Intl.NumberFormat('fr-CA', { style: 'currency', currency: 'CAD' }).format(context.parsed);
+                                label += context.parsed.toLocaleString('fr-DZ') + ' $CAD';
                             }
                             return label;
                         }

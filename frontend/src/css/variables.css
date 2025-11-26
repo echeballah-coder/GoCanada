@@ -71,6 +71,11 @@
 
    /* Transitions */
    --transition-fast: 0.2s ease;
+
+   /* Glassmorphism (Light) */
+   --glass-bg: rgba(255, 255, 255, 0.8);
+   --glass-border: rgba(255, 255, 255, 0.5);
+   --glass-blur: 12px;
 }
 
 /* ==========================================
@@ -99,126 +104,20 @@
 
    /* Ajustements pour Primary/Accent (plus lumineux en dark) */
    --color-primary: #EF4444;
-   /**
- * @file variables.css
- * @description Définition des variables CSS globales (Design System).
- * Contient les couleurs, typographies, espacements et ombres.
- */
+   /* Rouge plus vif */
+   --color-primary-dark: #DC2626;
+   /* Rouge foncé pour hover */
+   --color-accent: #FCD34D;
+   /* Jaune plus doux */
 
-   :root {
-      /* ==========================================
-       1. Palette de Couleurs
-       ========================================== */
+   /* Shadows adaptées */
+   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
 
-      /* Couleurs Principales */
-      --color-primary: #D80621;
-      /* Rouge Canada */
-      --color-primary-dark: #a30419;
-      /* Rouge foncé (Hover) */
-      --color-accent: #FFC107;
-      /* Jaune (Accentuation) */
-
-      /* Couleurs de Fond */
-      --color-bg-main: #f8f9fa;
-      /* Fond de page léger */
-      --color-bg-card: #ffffff;
-      /* Fond des cartes */
-      --color-bg-input: #f1f3f5;
-      /* Fond des champs de formulaire */
-
-      /* Couleurs de Texte */
-      --color-text-main: #212529;
-      /* Texte principal (presque noir) */
-      --color-text-muted: #6c757d;
-      /* Texte secondaire (gris) */
-      --color-text-light: #ffffff;
-      /* Texte sur fond sombre */
-
-      /* Bordures */
-      --color-border: #dee2e6;
-      /* Gris clair pour bordures */
-
-      /* ==========================================
-       2. Typographie
-       ========================================== */
-      --font-family-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      --font-size-base: 16px;
-      --line-height-base: 1.6;
-
-      /* ==========================================
-       3. Espacements (Spacing System)
-       ========================================== */
-      --spacing-xs: 0.5rem;
-      /* 8px */
-      --spacing-sm: 1rem;
-      /* 16px */
-      --spacing-md: 1.5rem;
-      /* 24px */
-      --spacing-lg: 2rem;
-      /* 32px */
-      --spacing-xl: 3rem;
-      /* 48px */
-
-      /* ==========================================
-       4. Effets & UI
-       ========================================== */
-      --radius-md: 8px;
-      /* Arrondi standard */
-      --radius-lg: 12px;
-      /* Arrondi large */
-      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-
-      /* Transitions */
-      --transition-fast: 0.2s ease;
-
-      /* Glassmorphism (Light) */
-      --glass-bg: rgba(255, 255, 255, 0.8);
-      --glass-border: rgba(255, 255, 255, 0.5);
-      --glass-blur: 12px;
-   }
-
-   /* ==========================================
-   Dark Theme Variables
-   ========================================== */
-   [data-theme="dark"] {
-      /* Couleurs de Fond (Dark) */
-      --color-bg-main: #0F172A;
-      /* Bleu nuit profond */
-      --color-bg-card: #1E293B;
-      /* Gris ardoise */
-      --color-bg-input: #334155;
-      /* Gris ardoise moyen */
-
-      /* Couleurs de Texte (Dark) */
-      --color-text-main: #F1F5F9;
-      /* Texte clair */
-      --color-text-muted: #94A3B8;
-      /* Gris clair */
-      --color-text-light: #FFFFFF;
-      /* Blanc pur */
-
-      /* Bordures (Dark) */
-      --color-border: #334155;
-      /* Gris plus visible sur fond sombre */
-
-      /* Ajustements pour Primary/Accent (plus lumineux en dark) */
-      --color-primary: #EF4444;
-      /* Rouge plus vif */
-      --color-primary-dark: #DC2626;
-      /* Rouge foncé pour hover */
-      --color-accent: #FCD34D;
-      /* Jaune plus doux */
-
-      /* Shadows adaptées */
-      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
-
-      /* Glassmorphism (Dark) */
-      --glass-bg: rgba(30, 41, 59, 0.7);
-      /* Gris ardoise semi-transparent */
-      --glass-border: rgba(255, 255, 255, 0.1);
-      --glass-blur: 12px;
-   }
+   /* Glassmorphism (Dark) */
+   --glass-bg: rgba(30, 41, 59, 0.7);
+   /* Gris ardoise semi-transparent */
+   --glass-border: rgba(255, 255, 255, 0.1);
+   --glass-blur: 12px;
+}

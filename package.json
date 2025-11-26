@@ -1,0 +1,18 @@
+{
+    "name": "gocanada-algerie",
+    "version": "1.0.0",
+    "description": "Plateforme d'aide pour les étudiants algériens souhaitant étudier au Canada",
+    "scripts": {
+        "start": "npm run start --prefix backend",
+        "dev": "npm run dev --prefix backend",
+        "install:all": "npm install && npm install --prefix backend"
+    },
+    "keywords": [
+        "canada",
+        "algerie",
+        "etudes",
+        "immigration"
+    ],
+    "author": "GoCanada Team",
+    "license": "ISC"
+}

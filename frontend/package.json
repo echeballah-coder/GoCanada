@@ -1,0 +1,38 @@
+{
+    "name": "gocanada-frontend",
+    "version": "1.0.0",
+    "description": "Frontend pour GoCanada - Algérie",
+    "type": "module",
+    "scripts": {
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+        "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+        "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+        "lint": "eslint src/**/*.js",
+        "lint:fix": "eslint src/**/*.js --fix",
+        "format": "prettier --write \"src/**/*.{js,css,html}\"",
+        "format:check": "prettier --check \"src/**/*.{js,css,html}\"",
+        "build:css": "postcss src/css/**/*.css --dir dist/css --use cssnano",
+        "build:js": "node build/minify-js.js",
+        "build": "npm run build:css && npm run build:js",
+        "prebuild": "node -e \"require('fs').rmSync('dist', {recursive: true, force: true})\""
+    },
+    "keywords": [
+        "frontend",
+        "vanilla-js",
+        "education"
+    ],
+    "author": "GoCanada Team",
+    "license": "ISC",
+    "devDependencies": {
+        "@jest/globals": "^29.7.0",
+        "cssnano": "^6.0.3",
+        "eslint": "^8.56.0",
+        "eslint-config-prettier": "^9.1.0",
+        "jest": "^29.7.0",
+        "jest-environment-jsdom": "^29.7.0",
+        "postcss": "^8.4.33",
+        "postcss-cli": "^11.0.0",
+        "prettier": "^3.2.4",
+        "terser": "^5.27.0"
+    }
+}

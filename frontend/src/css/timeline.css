@@ -1,0 +1,177 @@
+/* ==========================================
+   TIMELINE VISUELLE (Parcours Journey)
+   Description : Ligne du temps interactive pour visualiser les étapes.
+   ========================================== */
+
+.timeline-section {
+    margin: 3rem 0;
+    padding: 2rem 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Ligne centrale verticale */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg,
+            var(--color-primary) 0%,
+            var(--color-accent) 100%);
+    opacity: 0.3;
+}
+
+/* Container pour chaque étape */
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.timeline-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Alternance gauche/droite */
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Point central (cercle) */
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-bg-card);
+    border: 3px solid var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--color-primary);
+    z-index: 2;
+    box-shadow: 0 0 0 6px var(--color-bg-main);
+    transition: all 0.3s ease;
+}
+
+.timeline-item.revealed .timeline-dot {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 0 0 6px var(--color-bg-main), 0 0 20px rgba(220, 38, 38, 0.4);
+}
+
+/* Contenu de l'étape */
+.timeline-content {
+    width: 45%;
+    padding: 1.5rem;
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+.timeline-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.timeline-icon {
+    font-size: 1.5rem;
+}
+
+.timeline-description {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* Badge de durée */
+.timeline-duration {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.3rem 0.75rem;
+    background: var(--color-bg-input);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        flex-direction: row !important;
+        padding-left: 60px;
+    }
+
+    .timeline-dot {
+        left: 20px;
+        transform: translateX(0);
+    }
+
+    .timeline-content {
+        width: 100%;
+    }
+}
+
+/* Animation de progression */
+@keyframes fillTimeline {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 100%;
+    }
+}
+
+.timeline-progress {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    width: 3px;
+    height: 0;
+    background: linear-gradient(180deg,
+            var(--color-primary) 0%,
+            var(--color-accent) 100%);
+    z-index: 1;
+    transition: height 0.5s ease-out;
+}

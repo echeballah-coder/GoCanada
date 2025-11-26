@@ -1,76 +1,92 @@
 /**
- * @file server.js
- * @description Point d'entrée du serveur Express pour l'application GoCanada.
- * Configure les middlewares, les routes et le serveur statique.
+ * ==========================================================================
+ * Fichier : server.js
+ * Description : Serveur Backend Node.js / Express.
+ *               Gère la sécurité, la compression, les logs et le routage.
+ * Auteur : GoCanada Team
+ * ==========================================================================
  */
 
 const express = require('express');
 const path = require('path');
+const helmet = require('helmet');
+const compression = require('compression');
+const morgan = require('morgan');
 const config = require('./config/config');
-const routes = require('./routes');
 
+// Initialisation de l'application Express
 const app = express();
+const PORT = config.PORT;
 
 // ==========================================
-// 1. Middlewares Globaux
+// 1. MIDDLEWARES (Sécurité & Performance)
 // ==========================================
 
-// Parse les requêtes JSON et URL-encoded
+/**
+ * Helmet : Sécurise les en-têtes HTTP.
+ * Note: contentSecurityPolicy est désactivé ici pour permettre le chargement
+ * de scripts externes comme Chart.js via CDN sans configuration complexe.
+ */
+app.use(helmet({
+    contentSecurityPolicy: false,
+}));
+
+/**
+ * Compression : Compresse les réponses HTTP (Gzip).
+ * Réduit considérablement la taille des fichiers transférés (HTML, CSS, JS).
+ */
+app.use(compression());
+
+/**
+ * Morgan : Logger de requêtes HTTP.
+ * 'combined' pour la prod (détails complets), 'dev' pour le développement (concis).
+ */
+app.use(morgan(config.ENV === 'production' ? 'combined' : 'dev'));
+
+// Middleware pour parser le corps des requêtes en JSON (pour les formulaires POST)
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Log des requêtes pour le débogage (Méthode + URL)
-app.use((req, res, next) => {
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-    next();
-});
 
 // ==========================================
-// 2. Gestion des Fichiers Statiques
+// 2. FICHIERS STATIQUES
 // ==========================================
 
-// Servir les sources frontend (CSS, JS) via /src
-// Permet d'importer les modules JS et CSS directement depuis le HTML
-app.use('/src', express.static(path.join(__dirname, '../frontend/src')));
-
-// Servir les fichiers publics (HTML, Images, Assets) à la racine
+// Servir les fichiers publics (HTML, Images) depuis le dossier 'frontend/public'
 app.use(express.static(path.join(__dirname, '../frontend/public')));
 
-// ==========================================
-// 3. Routes API
-// ==========================================
-
-app.use('/api', routes);
+// Servir les assets (CSS, JS) depuis le dossier 'frontend/src'
+// Accessible via l'URL /src/...
+app.use('/src', express.static(path.join(__dirname, '../frontend/src')));
 
 // ==========================================
-// 4. Gestion des Erreurs (404 & 500)
+// 3. ROUTES API
 // ==========================================
 
-// Gestion des routes non trouvées (404)
+const apiRoutes = require('./routes');
+app.use('/api', apiRoutes);
+
+// ==========================================
+// 4. GESTION DES ERREURS (404)
+// ==========================================
+
+/**
+ * Middleware 404 (Catch-all)
+ * Si aucune route précédente ne correspond, on renvoie la page 404 personnalisée.
+ */
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, '../frontend/public/404.html'), (err) => {
-        if (err) {
-            res.status(404).send("<h1>404 - Page non trouvée</h1>");
-        }
-    });
-});
-
-// Gestion globale des erreurs serveur (500)
-app.use((err, req, res, next) => {
-    console.error("Erreur Serveur:", err.stack);
-    res.status(500).json({
-        success: false,
-        message: "Une erreur interne est survenue.",
-        error: process.env.NODE_ENV === 'development' ? err.message : undefined
-    });
+    res.status(404).sendFile(path.join(__dirname, '../frontend/public/404.html'));
 });
 
 // ==========================================
-// 5. Démarrage du Serveur
+// 5. DÉMARRAGE DU SERVEUR
 // ==========================================
 
-app.listen(config.PORT, () => {
-    console.log(`\n🚀 Serveur démarré avec succès !`);
-    console.log(`🌍 URL locale : http://localhost:${config.PORT}`);
-    console.log(`📂 Dossier Public : ${path.join(__dirname, '../frontend/public')}\n`);
+app.listen(PORT, () => {
+    console.log(`\n==================================================`);
+    console.log(`🚀 SERVEUR DÉMARRÉ`);
+    console.log(`==================================================`);
+    console.log(`👉 URL Locale  : http://localhost:${PORT}`);
+    console.log(`🔒 Sécurité    : Helmet Activé`);
+    console.log(`📦 Performance : Compression Gzip Activée`);
+    console.log(`📝 Logs        : Morgan Activé`);
+    console.log(`==================================================\n`);
 });
