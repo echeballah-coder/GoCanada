@@ -5,120 +5,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoCanada – Algérie | Budget</title>
-    <meta name="description"
-        content="Simulez votre budget étudiant pour le Canada. Estimez vos frais de scolarité, logement et coût de la vie.">
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇨🇦</text></svg>">
     <link rel="stylesheet" href="/src/css/variables.css">
     <link rel="stylesheet" href="/src/css/global.css">
     <link rel="stylesheet" href="/src/css/components.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/src/css/enhancements.css">
     <script type="module" src="/src/js/app.js"></script>
 </head>
 
 <body>
     <header class="site-header">
         <div class="container header-container">
-            <a href="index.html" class="nav-logo">GoCanada <span class="accent-red">–</span> Algérie</a>
+            <a href="index.html" class="nav-logo">
+                <img src="/assets/logo.svg" alt="GoCanada" style="height: 40px; margin-right: 0.5rem; vertical-align: middle;">
+                GoCanada <span class="accent-red">–</span> Algérie
+            </a>
 
             <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
 
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Accueil</a></li>
-                    <li><a href="parcours.html" class="nav-link">Parcours</a></li>
-                    <li><a href="checklists.html" class="nav-link">Checklists</a></li>
-                    <li><a href="budget.html" class="nav-link">Budget</a></li>
-                    <li><a href="ressources.html" class="nav-link">Ressources</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<nav class="main-nav">
+    <ul class="nav-list">
+        <li><a href="index.html" class="nav-link">Accueil</a></li>
+        <li><a href="parcours.html" class="nav-link">Parcours</a></li>
+        <li><a href="checklists.html" class="nav-link">Checklists</a></li>
+        <li><a href="budget.html" class="nav-link">Budget</a></li>
+        <li><a href="ressources.html" class="nav-link">Ressources</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+</nav>
+</div>
+</header>
 
-    <main class="container">
-        <section class="section text-center">
-            <h1>Simulateur de Budget Étudiant</h1>
-            <p>Estimez le coût de votre première année au Canada. Remplissez les champs ci-dessous avec vos estimations.
-            </p>
-        </section>
+<main class="container">
+    <section class="section text-center">
+        <h1>Simulateur de Budget Étudiant</h1>
+        <p>Estimez le coût de votre première année au Canada. Remplissez les champs ci-dessous avec vos estimations.
+        </p>
+    </section>
 
-        <div class="grid-2">
-            <!-- Formulaire -->
-            <section id="budget-form-section" class="card">
-                <h3>Vos Dépenses</h3>
-                <form id="budget-form">
-                    <div>
-                        <label for="tuition">Frais de scolarité annuels ($CAD) :</label>
-                        <input type="number" id="tuition" name="tuition" placeholder="Ex: 15000" min="0" required>
-                        <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0;">Selon votre
-                            lettre d'admission.</p>
-                    </div>
+    <div class="grid-2">
+        <!-- Formulaire -->
+        <section id="budget-form-section" class="card">
+            <h3>Vos Dépenses</h3>
+            <form id="budget-form">
+                <div>
+                    <label for="tuition">Frais de scolarité annuels ($CAD) :</label>
+                    <input type="number" id="tuition" name="tuition" placeholder="Ex: 15000" min="0" required>
+                    <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0;">Selon votre
+                        lettre d'admission.</p>
+                </div>
 
-                    <div>
-                        <label for="housing">Logement mensuel ($CAD) :</label>
-                        <input type="number" id="housing" name="housing" placeholder="Ex: 800" min="0" required>
-                    </div>
+                <div>
+                    <label for="housing">Logement mensuel ($CAD) :</label>
+                    <input type="number" id="housing" name="housing" placeholder="Ex: 800" min="0" required>
+                </div>
 
-                    <div>
-                        <label for="food">Nourriture mensuelle ($CAD) :</label>
-                        <input type="number" id="food" name="food" placeholder="Ex: 400" min="0" required>
-                    </div>
+                <div>
+                    <label for="food">Nourriture mensuelle ($CAD) :</label>
+                    <input type="number" id="food" name="food" placeholder="Ex: 400" min="0" required>
+                </div>
 
-                    <div>
-                        <label for="transport">Transport mensuel ($CAD) :</label>
-                        <input type="number" id="transport" name="transport" placeholder="Ex: 60" min="0" required>
-                    </div>
+                <div>
+                    <label for="transport">Transport mensuel ($CAD) :</label>
+                    <input type="number" id="transport" name="transport" placeholder="Ex: 60" min="0" required>
+                </div>
 
-                    <div>
-                        <label for="other">Autres dépenses mensuelles ($CAD) :</label>
-                        <input type="number" id="other" name="other"
-                            placeholder="Ex: 150 (Téléphone, Internet, Loisirs)" min="0" required>
-                    </div>
-
-                    <div class="mt-md">
-                        <button type="submit" class="btn btn-primary" style="width: 100%">Calculer mon budget</button>
-                    </div>
-                </form>
-            </section>
-
-            <!-- Résultats -->
-            <section id="budget-results" class="card" style="display: none;">
-                <h3>Votre Estimation</h3>
-
-                <div class="mt-md" style="position: relative; height: 250px; width: 100%; margin-bottom: 2rem;">
-                    <canvas id="budgetChart"></canvas>
+                <div>
+                    <label for="other">Autres dépenses mensuelles ($CAD) :</label>
+                    <input type="number" id="other" name="other" placeholder="Ex: 150 (Téléphone, Internet, Loisirs)"
+                        min="0" required>
                 </div>
 
                 <div class="mt-md">
-                    <p>Total Mensuel estimé : <strong id="total-monthly" class="text-primary"
-                            style="font-size: 1.5rem;">0 $CAD</strong></p>
-                    <p>Total Annuel estimé : <strong id="total-annual" class="text-primary" style="font-size: 1.5rem;">0
-                            $CAD</strong></p>
+                    <button type="submit" class="btn btn-primary" style="width: 100%">Calculer mon budget</button>
                 </div>
+            </form>
+        </section>
 
-                <div id="budget-comment-box"
-                    style="background-color: var(--color-bg-input); padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
-                    <p id="result-comment" style="margin-bottom: 0; font-weight: 600;">...</p>
-                </div>
+        <!-- Résultats -->
+        <section id="budget-results" class="card" style="display: none;">
+            <h3>Votre Estimation</h3>
 
-                <div class="mt-lg">
-                    <button id="reset-budget" class="btn btn-secondary" style="width: 100%">Refaire une
-                        simulation</button>
-                </div>
-            </section>
-        </div>
-    </main>
+            <div class="mt-md" style="position: relative; height: 250px; width: 100%; margin-bottom: 2rem;">
+                <canvas id="budgetChart"></canvas>
+            </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 GoCanada – Algérie. Projet étudiant à but informatif.</p>
-        </div>
-    </footer>
+            <div class="mt-md">
+                <p>Total Mensuel estimé : <strong id="total-monthly" class="text-primary" style="font-size: 1.5rem;">0
+                        $CAD</strong></p>
+                <p>Total Annuel estimé : <strong id="total-annual" class="text-primary" style="font-size: 1.5rem;">0
+                        $CAD</strong></p>
+            </div>
+
+            <div id="budget-comment-box"
+                style="background-color: var(--color-bg-input); padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
+                <p id="result-comment" style="margin-bottom: 0; font-weight: 600;">...</p>
+            </div>
+
+            <div class="mt-lg">
+                <button id="reset-budget" class="btn btn-secondary" style="width: 100%">Refaire une
+                    simulation</button>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2023 GoCanada – Algérie. Projet étudiant à but informatif.</p>
+    </div>
+</footer>
 </body>
 
 </html>

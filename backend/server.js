@@ -9,10 +9,10 @@
 
 const express = require('express');
 const path = require('path');
-const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
 const config = require('./config/config');
+const { securityMiddleware } = require('./middlewares');
 
 // Initialisation de l'application Express
 const app = express();
@@ -23,13 +23,9 @@ const PORT = config.PORT;
 // ==========================================
 
 /**
- * Helmet : Sécurise les en-têtes HTTP.
- * Note: contentSecurityPolicy est désactivé ici pour permettre le chargement
- * de scripts externes comme Chart.js via CDN sans configuration complexe.
+ * Helmet : Sécurise les en-têtes HTTP avec CSP configurée.
  */
-app.use(helmet({
-    contentSecurityPolicy: false,
-}));
+app.use(securityMiddleware);
 
 /**
  * Compression : Compresse les réponses HTTP (Gzip).
@@ -73,14 +69,15 @@ app.use('/api', apiRoutes);
  * Si aucune route précédente ne correspond, on renvoie la page 404 personnalisée.
  */
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, '../frontend/public/404.html'));
+  res.status(404).sendFile(path.join(__dirname, '../frontend/public/404.html'));
 });
 
 // ==========================================
 // 5. DÉMARRAGE DU SERVEUR
 // ==========================================
 
-app.listen(PORT, () => {
+if (require.main === module) {
+  app.listen(PORT, () => {
     console.log(`\n==================================================`);
     console.log(`🚀 SERVEUR DÉMARRÉ`);
     console.log(`==================================================`);
@@ -89,4 +86,8 @@ app.listen(PORT, () => {
     console.log(`📦 Performance : Compression Gzip Activée`);
     console.log(`📝 Logs        : Morgan Activé`);
     console.log(`==================================================\n`);
-});
+  });
+}
+
+// Exporter l'application pour les tests (supertest) et l'importation par d'autres modules
+module.exports = app;

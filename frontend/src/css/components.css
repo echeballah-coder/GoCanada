@@ -12,60 +12,60 @@
    Description : Styles pour les actions principales et secondaires.
    ========================================== */
 .btn {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    border: none;
-    font-size: 1rem;
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: none;
+  font-size: 1rem;
 }
 
 /* Bouton Primaire (Action pour appeler à l'action, ex: "Calculer") */
 .btn-primary {
-    background-color: var(--color-primary);
-    color: var(--color-text-light);
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
 }
 
 .btn-primary:hover {
-    background-color: var(--color-primary-dark);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 /* Bouton Secondaire (Action alternative, ex: "Annuler") */
 .btn-secondary {
-    background-color: transparent;
-    border: 2px solid var(--color-border);
-    color: var(--color-text-main);
+  background-color: transparent;
+  border: 2px solid var(--color-border);
+  color: var(--color-text-main);
 }
 
 .btn-secondary:hover {
-    border-color: var(--color-text-main);
-    background-color: var(--color-bg-input);
+  border-color: var(--color-text-main);
+  background-color: var(--color-bg-input);
 }
 
 /* Bouton de réinitialisation (Lien de style) */
 .btn-reset {
-    background: none;
-    border: none;
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    cursor: pointer;
-    text-decoration: underline;
-    padding: 0;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
 }
 
 .btn-reset:hover {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 /* Taille de bouton large */
 .btn-lg {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
 }
 
 /* ==========================================
@@ -73,16 +73,16 @@
    Description : Conteneurs blancs/sombres avec ombre pour le contenu.
    ========================================== */
 .card {
-    background-color: var(--color-bg-card);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--color-border);
-    transition: box-shadow var(--transition-fast);
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  transition: box-shadow var(--transition-fast);
 }
 
 .card:hover {
-    box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md);
 }
 
 /* ==========================================
@@ -90,35 +90,35 @@
    Description : Inputs, Labels et Textareas.
    ========================================== */
 form div {
-    margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
 }
 
 label {
-    display: block;
-    margin-bottom: var(--spacing-xs);
-    font-weight: 600;
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
 }
 
 input,
 select,
 textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background-color: var(--color-bg-input);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: border-color var(--transition-fast);
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-input);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
 }
 
 /* Focus state : Mise en valeur de l'input actif */
 input:focus,
 select:focus,
 textarea:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    background-color: var(--color-bg-card);
+  outline: none;
+  border-color: var(--color-primary);
+  background-color: var(--color-bg-card);
 }
 
 /* ==========================================
@@ -126,95 +126,95 @@ textarea:focus {
    Description : Liste d'étapes dépliables.
    ========================================== */
 .parcours-container {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    max-width: 800px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .parcours-step {
-    background-color: var(--color-bg-card);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-    overflow: hidden;
-    transition: all 0.3s ease;
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 /* En-tête de l'étape (Zone cliquable) */
 .step-header {
-    display: flex;
-    align-items: center;
-    padding: var(--spacing-md);
-    cursor: pointer;
-    background-color: var(--color-bg-card);
-    transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-md);
+  cursor: pointer;
+  background-color: var(--color-bg-card);
+  transition: background-color 0.2s ease;
 }
 
 .step-header:hover {
-    background-color: var(--color-bg-input);
+  background-color: var(--color-bg-input);
 }
 
 /* Numéro de l'étape (Cercle coloré) */
 .step-number {
-    background-color: var(--color-primary);
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    margin-right: var(--spacing-sm);
-    flex-shrink: 0;
+  background-color: var(--color-primary);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: var(--spacing-sm);
+  flex-shrink: 0;
 }
 
 .step-title {
-    font-weight: 700;
-    font-size: 1.1rem;
-    flex-grow: 1;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-grow: 1;
 }
 
 .step-icon {
-    font-size: 1.5rem;
-    color: var(--color-text-muted);
-    transition: transform 0.3s ease;
+  font-size: 1.5rem;
+  color: var(--color-text-muted);
+  transition: transform 0.3s ease;
 }
 
 /* Contenu de l'étape (Caché par défaut) */
 .step-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    background-color: var(--color-bg-card);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background-color: var(--color-bg-card);
 }
 
 .step-body {
-    padding: var(--spacing-md);
-    padding-top: 0;
-    border-top: 1px solid transparent;
-    color: var(--color-text-muted);
+  padding: var(--spacing-md);
+  padding-top: 0;
+  border-top: 1px solid transparent;
+  color: var(--color-text-muted);
 }
 
 .step-body ul {
-    padding-left: 1.5rem;
-    margin-top: 0.5rem;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
 }
 
 /* État Actif (Ouvert) */
 .parcours-step.active {
-    border-color: var(--color-primary);
-    box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
 }
 
 .parcours-step.active .step-icon {
-    transform: rotate(45deg);
-    color: var(--color-primary);
+  transform: rotate(45deg);
+  color: var(--color-primary);
 }
 
 .parcours-step.active .step-content {
-    max-height: 500px;
+  max-height: 500px;
 }
 
 /* ==========================================
@@ -224,141 +224,143 @@ textarea:focus {
 
 /* --- Barre de Progression --- */
 .progress-container {
-    background-color: var(--color-bg-input);
-    border-radius: 20px;
-    height: 20px;
-    width: 100%;
-    margin-bottom: var(--spacing-md);
-    overflow: hidden;
-    position: relative;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-bg-input);
+  border-radius: 20px;
+  height: 20px;
+  width: 100%;
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .progress-bar {
-    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
-    height: 100%;
-    width: 0%;
-    border-radius: 20px;
-    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 /* Animation "Shimmer" (Brillance) sur la barre */
 .progress-bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(45deg,
-            rgba(255, 255, 255, 0) 25%,
-            rgba(255, 255, 255, 0.3) 50%,
-            rgba(255, 255, 255, 0) 75%);
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite linear;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
 }
 
 @keyframes shimmer {
-    0% {
-        background-position: 200% 0;
-    }
+  0% {
+    background-position: 200% 0;
+  }
 
-    100% {
-        background-position: -200% 0;
-    }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .progress-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.75rem;
-    font-weight: bold;
-    color: var(--color-text-main);
-    z-index: 1;
-    text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--color-text-main);
+  z-index: 1;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
 /* --- Checkbox Personnalisée --- */
 .checklist-items {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .checklist-items li {
-    margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 
 .checkbox-container {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    font-size: 1rem;
-    user-select: none;
-    position: relative;
-    padding-left: 35px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+  user-select: none;
+  position: relative;
+  padding-left: 35px;
 }
 
 /* Masquer la checkbox native */
 .checkbox-container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 
 /* Créer la nouvelle checkbox (carré) */
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 24px;
-    width: 24px;
-    background-color: var(--color-bg-input);
-    border: 2px solid var(--color-border);
-    border-radius: 4px;
-    transition: all 0.2s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background-color: var(--color-bg-input);
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
 /* Hover effect */
-.checkbox-container:hover input~.checkmark {
-    background-color: var(--color-border);
+.checkbox-container:hover input ~ .checkmark {
+  background-color: var(--color-border);
 }
 
 /* Checked state */
-.checkbox-container input:checked~.checkmark {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 /* Indicateur (Coche blanche) */
 .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+  content: '';
+  position: absolute;
+  display: none;
 }
 
-.checkbox-container input:checked~.checkmark:after {
-    display: block;
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
 }
 
 .checkbox-container .checkmark:after {
-    left: 8px;
-    top: 4px;
-    width: 6px;
-    height: 12px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+  left: 8px;
+  top: 4px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 /* Texte barré quand coché */
-.checkbox-container input:checked~span:not(.checkmark) {
-    text-decoration: line-through;
-    color: var(--color-text-muted);
+.checkbox-container input:checked ~ span:not(.checkmark) {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
 }
 
 /* ==========================================
@@ -366,30 +368,30 @@ textarea:focus {
    Description : Bannière principale de la page d'accueil.
    ========================================== */
 .hero-section {
-    text-align: center;
-    padding: 4rem 1rem;
-    background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-main) 100%);
-    border-radius: var(--radius-lg);
-    margin-bottom: 3rem;
-    border: 1px solid var(--color-border);
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-main) 100%);
+  border-radius: var(--radius-lg);
+  margin-bottom: 3rem;
+  border: 1px solid var(--color-border);
 }
 
 .hero-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--color-text-muted);
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    line-height: 1.6;
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
 }
 
 /* ==========================================
@@ -397,40 +399,42 @@ textarea:focus {
    Description : Cartes interactives avec effet hover.
    ========================================== */
 .feature-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--color-primary);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
 }
 
 .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    display: inline-block;
-    background: var(--color-bg-input);
-    padding: 1rem;
-    border-radius: 50%;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  background: var(--color-bg-input);
+  padding: 1rem;
+  border-radius: 50%;
 }
 
 /* Utilities pour texte */
 .text-primary {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .text-muted {
-    color: var(--color-text-muted);
+  color: var(--color-text-muted);
 }
 
 .font-bold {
-    font-weight: 700;
+  font-weight: 700;
 }

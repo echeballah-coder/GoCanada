@@ -1,0 +1,37 @@
+/**
+ * @file src/css/index.css
+ * @description Fichier CSS centralisé qui importe tous les fichiers CSS.
+ * Permet une meilleure organisation et maintenabilité.
+ * 
+ * ORGANISATION:
+ * 1. Variables et thème
+ * 2. Global et reset
+ * 3. Composants réutilisables
+ * 4. Améliorations et utilitaires
+ * 5. Animations et transitions
+ * 6. Impression et accessibilité
+ */
+
+/* 1. Variables CSS personnalisées */
+@import './variables.css';
+
+/* 2. Styles globaux et reset */
+@import './global.css';
+
+/* 3. Composants réutilisables */
+@import './components.css';
+
+/* 4. Améliorations et styles additionnels */
+@import './enhancements.css';
+
+/* 5. Animations d'apparition au défilement */
+@import './lazyload.css';
+
+/* 6. Timeline (page Parcours) */
+@import './timeline.css';
+
+/* 7. Tooltips (infobulles) */
+@import './tooltip.css';
+
+/* 8. Styles d'impression */
+@import './print.css';

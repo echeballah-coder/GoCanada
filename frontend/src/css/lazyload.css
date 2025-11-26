@@ -1,0 +1,36 @@
+/* Lazy Loading Images */
+img[data-src] {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+img[data-src].loaded {
+  opacity: 1;
+}
+
+img[data-src].error {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+/* Placeholder pendant le chargement */
+img[data-src]:not(.loaded):not(.error) {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-input) 0%,
+    var(--color-border) 50%,
+    var(--color-bg-input) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}

@@ -1,0 +1,488 @@
+/* ===========================================
+   VISUAL ENHANCEMENTS - GOCANADA
+   Description: Modern visual optimizations
+   =========================================== */
+
+/* Google Fonts - Inter (Professional) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* Override base font-family */
+body {
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===========================================
+   1. HERO SECTION - Enhanced
+   =========================================== */
+
+.hero-section {
+  position: relative;
+  text-align: center;
+  padding: 5rem 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(220, 38, 38, 0.05) 0%,
+    rgba(239, 68, 68, 0.03) 50%,
+    rgba(220, 38, 38, 0.05) 100%
+  );
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  margin-bottom: 3rem;
+  border: 1px solid rgba(220, 38, 38, 0.1);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+/* Rotating gradient background */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animated gradient title */
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(
+    90deg,
+    #dc2626 0%,
+    #ef4444 25%,
+    #f87171 50%,
+    #ef4444 75%,
+    #dc2626 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+  position: relative;
+  z-index: 1;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--color-text-muted);
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+}
+
+/* Enhanced CTA buttons */
+.hero-section .btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+}
+
+.hero-section .btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s,
+    height 0.6s;
+}
+
+.hero-section .btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.hero-section .btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 20px 40px rgba(220, 38, 38, 0.3),
+    0 0 20px rgba(220, 38, 38, 0.2);
+}
+
+.hero-section .btn-secondary:hover {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(220, 38, 38, 0.1);
+}
+
+/* ===========================================
+   2. FEATURE CARDS - Enhanced
+   =========================================== */
+
+.feature-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 20px 60px rgba(220, 38, 38, 0.15),
+    0 0 0 1px rgba(220, 38, 38, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-color: rgba(220, 38, 38, 0.3);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+  padding: 1.25rem;
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.2) 0%, rgba(239, 68, 68, 0.1) 100%);
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2);
+}
+
+/* ===========================================
+   3. NAVIGATION - Enhanced
+   =========================================== */
+
+.site-header {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.site-header.scrolled {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ===========================================
+   4. TIMELINE - Enhanced
+   =========================================== */
+
+.timeline::before {
+  background: linear-gradient(
+    180deg,
+    rgba(220, 38, 38, 0.2) 0%,
+    rgba(239, 68, 68, 0.5) 50%,
+    rgba(220, 38, 38, 0.2) 100%
+  );
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+}
+
+.timeline-dot {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  box-shadow:
+    0 0 0 4px rgba(220, 38, 38, 0.1),
+    0 4px 12px rgba(220, 38, 38, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-item.visible .timeline-dot {
+  animation: pulse-dot 2s ease infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 4px rgba(220, 38, 38, 0.1),
+      0 4px 12px rgba(220, 38, 38, 0.3);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 8px rgba(220, 38, 38, 0.2),
+      0 6px 16px rgba(220, 38, 38, 0.4);
+  }
+}
+
+.timeline-content {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-item:hover .timeline-content {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ===========================================
+   5. BUTTONS - Global enhancements
+   =========================================== */
+
+.btn {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(220, 38, 38, 0.3);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ===========================================
+   6. CARDS - Global enhancements
+   =========================================== */
+
+.card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--color-border);
+}
+
+.card:hover {
+  border-color: rgba(220, 38, 38, 0.2);
+}
+
+/* ===========================================
+   7. ANIMATIONS - Entrance
+   =========================================== */
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animations */
+.fade-in:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.fade-in:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.fade-in:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.fade-in:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.fade-in:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.fade-in:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+/* ===========================================
+   8. DARK MODE - Enhanced
+   =========================================== */
+
+[data-theme='dark'] .hero-section {
+  background: linear-gradient(
+    135deg,
+    rgba(220, 38, 38, 0.08) 0%,
+    rgba(239, 68, 68, 0.05) 50%,
+    rgba(220, 38, 38, 0.08) 100%
+  );
+  border-color: rgba(220, 38, 38, 0.2);
+}
+
+[data-theme='dark'] .site-header {
+  background: rgba(23, 23, 23, 0.95);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .feature-card:hover {
+  box-shadow:
+    0 20px 60px rgba(220, 38, 38, 0.2),
+    0 0 0 1px rgba(220, 38, 38, 0.2);
+}
+
+/* ===========================================
+   9. RESPONSIVE - Mobile optimizations
+   =========================================== */
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+}
+
+/* ===========================================
+   10. ACCESSIBILITY - Focus states
+   =========================================== */
+
+.btn:focus-visible,
+.nav-link:focus-visible,
+.feature-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* ===========================================
+   11. PERFORMANCE - GPU acceleration
+   =========================================== */
+
+.feature-card,
+.timeline-item,
+.btn,
+.nav-link {
+  will-change: transform;
+}
+
+/* ===========================================
+   12. TYPOGRAPHY - Enhanced hierarchy
+   =========================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+p {
+  line-height: 1.7;
+}
+
+.text-primary {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

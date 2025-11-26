@@ -14,7 +14,9 @@
         "build:css": "postcss src/css/**/*.css --dir dist/css --use cssnano",
         "build:js": "node build/minify-js.js",
         "build": "npm run build:css && npm run build:js",
-        "prebuild": "node -e \"require('fs').rmSync('dist', {recursive: true, force: true})\""
+        "prebuild": "node -e \"require('fs').rmSync('dist', {recursive: true, force: true})\"",
+        "add:enhancements": "node scripts/add-enhancements.js",
+        "generate:icons": "node scripts/svg-to-png.js"
     },
     "keywords": [
         "frontend",
@@ -23,6 +25,9 @@
     ],
     "author": "GoCanada Team",
     "license": "ISC",
+    "dependencies": {
+        "chart.js": "^4.4.0"
+    },
     "devDependencies": {
         "@jest/globals": "^29.7.0",
         "cssnano": "^6.0.3",
@@ -33,6 +38,7 @@
         "postcss": "^8.4.33",
         "postcss-cli": "^11.0.0",
         "prettier": "^3.2.4",
-        "terser": "^5.27.0"
+        "terser": "^5.27.0",
+        "sharp": "^0.32.0"
     }
 }

@@ -3,12 +3,12 @@
  */
 
 import { describe, it, expect, beforeEach, jest } from '@jest/globals';
-import { initMobileMenu } from '../modules/mobileMenu.js';
+import { initMobileMenu } from '../modules/ui/mobileMenu.js';
 
 describe('Mobile Menu Module', () => {
-    beforeEach(() => {
-        // Setup basic mobile menu HTML structure
-        document.body.innerHTML = `
+  beforeEach(() => {
+    // Setup basic mobile menu HTML structure
+    document.body.innerHTML = `
       <button class="menu-toggle" aria-expanded="false">
         <span></span>
         <span></span>
@@ -22,71 +22,71 @@ describe('Mobile Menu Module', () => {
       </nav>
     `;
 
-        // Reset body overflow
-        document.body.style.overflow = '';
-    });
+    // Reset body overflow
+    document.body.style.overflow = '';
+  });
 
-    it('should toggle menu when clicking toggle button', () => {
-        initMobileMenu();
+  it('should toggle menu when clicking toggle button', () => {
+    initMobileMenu();
 
-        const menuToggle = document.querySelector('.menu-toggle');
-        const mainNav = document.querySelector('.main-nav');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
 
-        // Initially closed
-        expect(menuToggle.classList.contains('is-active')).toBe(false);
-        expect(mainNav.classList.contains('is-open')).toBe(false);
+    // Initially closed
+    expect(menuToggle.classList.contains('is-active')).toBe(false);
+    expect(mainNav.classList.contains('is-open')).toBe(false);
 
-        // Click to open
-        menuToggle.click();
-        expect(menuToggle.classList.contains('is-active')).toBe(true);
-        expect(mainNav.classList.contains('is-open')).toBe(true);
-        expect(menuToggle.getAttribute('aria-expanded')).toBe('true');
+    // Click to open
+    menuToggle.click();
+    expect(menuToggle.classList.contains('is-active')).toBe(true);
+    expect(mainNav.classList.contains('is-open')).toBe(true);
+    expect(menuToggle.getAttribute('aria-expanded')).toBe('true');
 
-        // Click to close
-        menuToggle.click();
-        expect(menuToggle.classList.contains('is-active')).toBe(false);
-        expect(mainNav.classList.contains('is-open')).toBe(false);
-        expect(menuToggle.getAttribute('aria-expanded')).toBe('false');
-    });
+    // Click to close
+    menuToggle.click();
+    expect(menuToggle.classList.contains('is-active')).toBe(false);
+    expect(mainNav.classList.contains('is-open')).toBe(false);
+    expect(menuToggle.getAttribute('aria-expanded')).toBe('false');
+  });
 
-    it('should prevent body scroll when menu is open', () => {
-        initMobileMenu();
+  it('should prevent body scroll when menu is open', () => {
+    initMobileMenu();
 
-        const menuToggle = document.querySelector('.menu-toggle');
+    const menuToggle = document.querySelector('.menu-toggle');
 
-        // Open menu
-        menuToggle.click();
-        expect(document.body.style.overflow).toBe('hidden');
+    // Open menu
+    menuToggle.click();
+    expect(document.body.style.overflow).toBe('hidden');
 
-        // Close menu
-        menuToggle.click();
-        expect(document.body.style.overflow).toBe('');
-    });
+    // Close menu
+    menuToggle.click();
+    expect(document.body.style.overflow).toBe('');
+  });
 
-    it('should close menu when nav link is clicked', (done) => {
-        initMobileMenu();
+  it('should close menu when nav link is clicked', done => {
+    initMobileMenu();
 
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLink = document.querySelector('.nav-link');
-        const mainNav = document.querySelector('.main-nav');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLink = document.querySelector('.nav-link');
+    const mainNav = document.querySelector('.main-nav');
 
-        // Open menu first
-        menuToggle.click();
-        expect(mainNav.classList.contains('is-open')).toBe(true);
+    // Open menu first
+    menuToggle.click();
+    expect(mainNav.classList.contains('is-open')).toBe(true);
 
-        // Click a nav link
-        navLink.click();
+    // Click a nav link
+    navLink.click();
 
-        // Wait for setTimeout to complete (100ms delay in the code)
-        setTimeout(() => {
-            expect(mainNav.classList.contains('is-open')).toBe(false);
-            done();
-        }, 150);
-    });
+    // Wait for setTimeout to complete (100ms delay in the code)
+    setTimeout(() => {
+      expect(mainNav.classList.contains('is-open')).toBe(false);
+      done();
+    }, 150);
+  });
 
-    it('should not throw error when menu elements are missing', () => {
-        document.body.innerHTML = '<div>No menu here</div>';
+  it('should not throw error when menu elements are missing', () => {
+    document.body.innerHTML = '<div>No menu here</div>';
 
-        expect(() => initMobileMenu()).not.toThrow();
-    });
+    expect(() => initMobileMenu()).not.toThrow();
+  });
 });

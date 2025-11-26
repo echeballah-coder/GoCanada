@@ -6,15 +6,15 @@ import { describe, it, expect, beforeEach } from '@jest/globals';
 import { initActiveNavIndicator } from '../modules/activeNavIndicator.js';
 
 describe('Active Nav Indicator Module', () => {
-    beforeEach(() => {
-        document.body.innerHTML = '';
-        // Reset window.location.pathname for each test
-        delete window.location;
-        window.location = { pathname: '/parcours.html' };
-    });
+  beforeEach(() => {
+    document.body.innerHTML = '';
+    // Reset window.location.pathname for each test
+    delete window.location;
+    window.location = { pathname: '/parcours.html' };
+  });
 
-    it('should mark the correct link as active based on current page', () => {
-        document.body.innerHTML = `
+  it('should mark the correct link as active based on current page', () => {
+    document.body.innerHTML = `
       <nav>
         <a href="index.html" class="nav-link">Home</a>
         <a href="parcours.html" class="nav-link">Parcours</a>
@@ -22,49 +22,49 @@ describe('Active Nav Indicator Module', () => {
       </nav>
     `;
 
-        initActiveNavIndicator();
+    initActiveNavIndicator();
 
-        const links = document.querySelectorAll('.nav-link');
+    const links = document.querySelectorAll('.nav-link');
 
-        // Only parcours.html should be active
-        expect(links[0].classList.contains('active')).toBe(false);
-        expect(links[1].classList.contains('active')).toBe(true);
-        expect(links[2].classList.contains('active')).toBe(false);
-    });
+    // Only parcours.html should be active
+    expect(links[0].classList.contains('active')).toBe(false);
+    expect(links[1].classList.contains('active')).toBe(true);
+    expect(links[2].classList.contains('active')).toBe(false);
+  });
 
-    it('should add aria-current attribute to active link', () => {
-        document.body.innerHTML = `
+  it('should add aria-current attribute to active link', () => {
+    document.body.innerHTML = `
       <nav>
         <a href="parcours.html" class="nav-link">Parcours</a>
       </nav>
     `;
 
-        initActiveNavIndicator();
+    initActiveNavIndicator();
 
-        const activeLink = document.querySelector('.nav-link');
-        expect(activeLink.getAttribute('aria-current')).toBe('page');
-    });
+    const activeLink = document.querySelector('.nav-link');
+    expect(activeLink.getAttribute('aria-current')).toBe('page');
+  });
 
-    it('should handle root path correctly', () => {
-        window.location = { pathname: '/' };
+  it('should handle root path correctly', () => {
+    window.location = { pathname: '/' };
 
-        document.body.innerHTML = `
+    document.body.innerHTML = `
       <nav>
         <a href="index.html" class="nav-link">Home</a>
         <a href="parcours.html" class="nav-link">Parcours</a>
       </nav>
     `;
 
-        initActiveNavIndicator();
+    initActiveNavIndicator();
 
-        const homeLink = document.querySelector('[href="index.html"]');
-        expect(homeLink.classList.contains('active')).toBe(true);
-        expect(homeLink.getAttribute('aria-current')).toBe('page');
-    });
+    const homeLink = document.querySelector('[href="index.html"]');
+    expect(homeLink.classList.contains('active')).toBe(true);
+    expect(homeLink.getAttribute('aria-current')).toBe('page');
+  });
 
-    it('should not throw error when no nav links exist', () => {
-        document.body.innerHTML = '<div>No navigation here</div>';
+  it('should not throw error when no nav links exist', () => {
+    document.body.innerHTML = '<div>No navigation here</div>';
 
-        expect(() => initActiveNavIndicator()).not.toThrow();
-    });
+    expect(() => initActiveNavIndicator()).not.toThrow();
+  });
 });
