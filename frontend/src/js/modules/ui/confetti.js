@@ -54,7 +54,7 @@ export function triggerConfetti() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Mettre à jour et dessiner chaque particule
-    particles.forEach((p, index) => {
+    particles.forEach(p => {
       p.y += p.speedY;
       p.x += Math.sin(p.y * 0.01) + p.speedX;
       p.rotation += p.rotationSpeed;
@@ -65,9 +65,6 @@ export function triggerConfetti() {
       ctx.fillStyle = p.color;
       ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
       ctx.restore();
-
-      // Si la particule sort de l'écran, on peut l'arrêter ou la recycler
-      // Ici on laisse tomber jusqu'à la fin de la durée
     });
 
     if (elapsed < duration) {
@@ -76,8 +73,6 @@ export function triggerConfetti() {
       // Fin de l'animation
       cancelAnimationFrame(animationId);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      // Optionnel : retirer le canvas du DOM
-      // document.body.removeChild(canvas);
     }
   }
 

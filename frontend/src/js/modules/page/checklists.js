@@ -8,8 +8,7 @@
  * ==========================================================================
  */
 
-import { showToast } from './toast.js';
-import { triggerConfetti } from './confetti.js';
+import { showToast, triggerConfetti } from '../ui/index.js';
 
 /**
  * Initialise toutes les sections de checklist présentes sur la page.
@@ -113,12 +112,12 @@ function loadState() {
       const checkboxes = section.querySelectorAll('input[type="checkbox"]');
 
       checkboxes.forEach(cb => {
-          // Récupérer la clé utilisée lors de la sauvegarde
-          const key = cb.dataset.id || cb.id || cb.name;
-          // Si une valeur est présente dans la sauvegarde, appliquer explicitement l'état (true/false)
-          if (Object.prototype.hasOwnProperty.call(state, key)) {
-            cb.checked = !!state[key];
-          }
+        // Récupérer la clé utilisée lors de la sauvegarde
+        const key = cb.dataset.id || cb.id || cb.name;
+        // Si une valeur est présente dans la sauvegarde, appliquer explicitement l'état (true/false)
+        if (Object.prototype.hasOwnProperty.call(state, key)) {
+          cb.checked = !!state[key];
+        }
       });
     }
   });

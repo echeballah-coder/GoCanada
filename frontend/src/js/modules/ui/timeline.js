@@ -13,7 +13,7 @@ export function initTimeline() {
   const timeline = document.querySelector('.timeline');
 
   if (!timeline || timelineItems.length === 0) {
-    console.log('Timeline: No timeline elements found');
+    // console.log('Timeline: No timeline elements found');
     return;
   }
 
@@ -68,5 +68,5 @@ export function initTimeline() {
   // Exposer la fonction pour usage externe si nécessaire
   window.scrollToTimelineStep = scrollToStep;
 
-  console.log(`✅ Timeline initialized: ${timelineItems.length} steps`);
+  // console.log(`✅ Timeline initialized: ${timelineItems.length} steps`);
 }

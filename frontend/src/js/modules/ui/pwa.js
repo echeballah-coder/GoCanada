@@ -9,7 +9,7 @@
 export function initPWA() {
   // Vérifier le support du Service Worker
   if (!('serviceWorker' in navigator)) {
-    console.log('ℹ️ Service Worker non supporté par ce navigateur');
+    // console.log('ℹ️ Service Worker non supporté par ce navigateur');
     return;
   }
 
@@ -29,12 +29,12 @@ async function registerServiceWorker() {
       scope: '/',
     });
 
-    console.log('✅ Service Worker enregistré:', registration.scope);
+    // console.log('✅ Service Worker enregistré:', registration.scope);
 
     // Vérifier les mises à jour
     registration.addEventListener('updatefound', () => {
       const newWorker = registration.installing;
-      console.log("🔄 Nouvelle version du Service Worker en cours d'installation...");
+      // console.log("🔄 Nouvelle version du Service Worker en cours d'installation...");
 
       newWorker.addEventListener('statechange', () => {
         if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
@@ -104,7 +104,7 @@ function handlePWAEvents() {
 
   // Événement après installation
   window.addEventListener('appinstalled', () => {
-    console.log('✅ PWA installée avec succès');
+    // console.log('✅ PWA installée avec succès');
     deferredPrompt = null;
   });
 }
@@ -137,8 +137,8 @@ function showInstallButton(deferredPrompt) {
     installButton.style.display = 'none';
     deferredPrompt.prompt();
 
-    const { outcome } = await deferredPrompt.userChoice;
-    console.log(`Installation ${outcome === 'accepted' ? 'acceptée' : 'refusée'}`);
+    await deferredPrompt.userChoice;
+    // console.log(`Installation ${outcome === 'accepted' ? 'acceptée' : 'refusée'}`);
 
     deferredPrompt = null;
   });

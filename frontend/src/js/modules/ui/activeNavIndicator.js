@@ -12,7 +12,6 @@ export function initActiveNavIndicator() {
   const navLinks = document.querySelectorAll('.nav-link');
 
   if (navLinks.length === 0) {
-    console.warn('Active Nav Indicator: No nav links found');
     return;
   }
 

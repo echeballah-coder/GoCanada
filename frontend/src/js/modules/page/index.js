@@ -6,3 +6,4 @@
 export { initParcours } from './parcours.js';
 export { initContactForm } from './contact.js';
 export { initBudgetCalculator } from './budgetCalculator.js';
+export { initChecklists } from './checklists.js';

@@ -10,13 +10,12 @@
 export function initLazyLoad() {
   // Support natif du lazy loading
   if ('loading' in HTMLImageElement.prototype) {
-    // Le navigateur supporte loading="lazy"
     const images = document.querySelectorAll('img[data-src]');
     images.forEach(img => {
       img.src = img.dataset.src;
       img.removeAttribute('data-src');
     });
-    console.log(`✅ Lazy loading natif: ${images.length} images`);
+    // console.log(`✅ Lazy loading natif: ${images.length} images`);
     return;
   }
 
@@ -41,12 +40,12 @@ export function initLazyLoad() {
     const images = document.querySelectorAll('img[data-src]');
     images.forEach(img => imageObserver.observe(img));
 
-    console.log(`✅ Lazy loading (Intersection Observer): ${images.length} images`);
+    // console.log(`✅ Lazy loading (Intersection Observer): ${images.length} images`);
   } else {
     // Fallback: charger toutes les images immédiatement
     const images = document.querySelectorAll('img[data-src]');
     images.forEach(loadImage);
-    console.log(`⚠️ Lazy loading non supporté, chargement de ${images.length} images`);
+    // console.log(`⚠️ Lazy loading non supporté, chargement de ${images.length} images`);
   }
 }
 

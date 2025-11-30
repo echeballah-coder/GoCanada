@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { describe, it, expect, beforeEach, jest } from '@jest/globals';
+import { describe, it, expect, beforeEach } from '@jest/globals';
 import { initMobileMenu } from '../modules/ui/mobileMenu.js';
 
 describe('Mobile Menu Module', () => {

@@ -4,7 +4,7 @@
  * REFACTORISÉ : Utilise utilitaires validation et simplifie la logique.
  */
 
-import { showToast } from '../toast.js';
+import { showToast } from '../ui/toast.js';
 import { validateData, isValidEmail, isValidText } from '../../utils/validation.js';
 
 /**

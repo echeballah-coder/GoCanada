@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, beforeEach } from '@jest/globals';
-import { initActiveNavIndicator } from '../modules/activeNavIndicator.js';
+import { initActiveNavIndicator } from '../modules/ui/activeNavIndicator.js';
 
 describe('Active Nav Indicator Module', () => {
   beforeEach(() => {

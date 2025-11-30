@@ -1,11 +1,5 @@
-/**
- * @file modules/page/budgetCalculator.js
- * @description Gère la logique du simulateur de budget.
- * REFACTORISÉ : Utilise utilitaires format et simplifie la logique.
- */
-
 import Chart from 'chart.js/auto';
-import { formatCurrency, formatNumber } from '../../utils/format.js';
+import { formatCurrency } from '../../utils/format.js';
 import { getCSSVariable } from '../../utils/dom.js';
 
 let budgetChartInstance = null;

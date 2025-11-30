@@ -13,7 +13,6 @@ export function initTooltips() {
   const tooltipElements = querySelectorAll('[data-tooltip]');
 
   if (tooltipElements.length === 0) {
-    console.log('Tooltips: No elements with data-tooltip found');
     return;
   }
 
@@ -40,10 +39,7 @@ export function initTooltips() {
       }
     });
   });
-
-  console.log(`✅ Tooltips initialized: ${tooltipElements.length} element(s)`);
 }
-
 /**
  * Crée un élément tooltip DOM.
  * @param {string} text - Le texte du tooltip.

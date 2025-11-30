@@ -7,7 +7,6 @@
 import {
   querySelector,
   querySelectorAll,
-  toggleClass,
   addClass,
   removeClass,
   disableBodyScroll,
@@ -23,7 +22,6 @@ export function initMobileMenu() {
   const navLinks = querySelectorAll('.nav-link');
 
   if (!menuToggle || !mainNav) {
-    console.warn('Mobile menu: Elements not found');
     return;
   }
 

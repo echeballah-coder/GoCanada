@@ -86,19 +86,12 @@ export const retry = async (fn, maxAttempts = 3, baseDelay = 1000) => {
  * Crée une Promesse qui timeout après un délai.
  * @param {Promise} promise - La Promesse à attendre.
  * @param {number} timeoutMs - Timeout en millisecondes.
- * @returns {Promise}
- *
- * @example
- * try {
- *   await withTimeout(fetch('/api/data'), 5000);
- * } catch (error) {
- *   console.error('Timeout ou erreur');
- * }
+ * @returns {Promise} La promesse avec timeout.
  */
-export const withTimeout = (promise, timeoutMs) => {
-  const timeoutPromise = new Promise((_, reject) =>
-    setTimeout(() => reject(new Error(`Timeout après ${timeoutMs}ms`)), timeoutMs)
-  );
+export const timeout = (promise, timeoutMs) => {
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error('Timeout exceeded')), timeoutMs);
+  });
   return Promise.race([promise, timeoutPromise]);
 };
 
