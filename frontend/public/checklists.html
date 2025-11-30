@@ -4,20 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoCanada – Algérie | Checklists</title>
+    <title>GoCanada | Checklists</title>
     <link rel="stylesheet" href="/src/css/variables.css">
     <link rel="stylesheet" href="/src/css/global.css">
     <link rel="stylesheet" href="/src/css/components.css">
     <link rel="stylesheet" href="/src/css/enhancements.css">
     <script type="module" src="/src/js/app.js"></script>
-</head>
+    <!DOCTYPE html>
+    <html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GoCanada</title>
+        <link rel="stylesheet" href="/src/css/variables.css">
+        <link rel="stylesheet" href="/src/css/global.css">
+        <link rel="stylesheet" href="/src/css/components.css">
+        <link rel="stylesheet" href="/src/css/enhancements.css">
+        <script type="module" src="/src/js/app.js"></script>
+    </head>
 
 <body>
     <header class="site-header">
         <div class="container header-container">
             <a href="index.html" class="nav-logo">
-                <img src="/assets/logo.svg" alt="GoCanada" style="height: 40px; margin-right: 0.5rem; vertical-align: middle;">
-                GoCanada <span class="accent-red">–</span> Algérie
+                <img src="/assets/logo.svg" alt="GoCanada"
+                    style="height: 40px; margin-right: 0.5rem; vertical-align: middle;">
+                GoCanada
             </a>
 
             <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
@@ -40,189 +53,189 @@
     </header>
     </header>
 
-<main class="container">
-    <section class="section text-center">
-        <h1>Checklists de Préparation</h1>
-        <p>Suivez votre avancement étape par étape. Vos progrès sont sauvegardés automatiquement dans votre
-            navigateur.</p>
-    </section>
-
-    <div class="grid-2">
-        <!-- Documents Académiques -->
-        <section class="card checklist-section" data-section="academic">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                <h3>📂 Documents Académiques</h3>
-                <button class="btn-reset" aria-label="Réinitialiser cette section">Réinitialiser</button>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 0%"></div>
-                <span class="progress-text">0%</span>
-            </div>
-            <ul class="checklist-items">
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="passport_valid">
-                        <span class="checkmark"></span>
-                        Passeport valide (pour toute la durée des études)
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="admission_letter">
-                        <span class="checkmark"></span>
-                        Lettre d'admission officielle (Etablissement DLI)
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="transcripts">
-                        <span class="checkmark"></span>
-                        Relevés de notes originaux et traductions
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="diplomas">
-                        <span class="checkmark"></span>
-                        Diplômes originaux et traductions
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="caq_approval">
-                        <span class="checkmark"></span>
-                        CAQ (Certificat d'Acceptation du Québec) - si applicable
-                    </label>
-                </li>
-            </ul>
+    <main class="container">
+        <section class="section text-center">
+            <h1>Checklists de Préparation</h1>
+            <p>Suivez votre avancement étape par étape. Vos progrès sont sauvegardés automatiquement dans votre
+                navigateur.</p>
         </section>
 
-        <!-- Documents Financiers -->
-        <section class="card checklist-section" data-section="financial">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                <h3>💰 Documents Financiers</h3>
-                <button class="btn-reset" aria-label="Réinitialiser cette section">Réinitialiser</button>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 0%"></div>
-                <span class="progress-text">0%</span>
-            </div>
-            <ul class="checklist-items">
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="bank_statements">
-                        <span class="checkmark"></span>
-                        Relevés bancaires (4 derniers mois)
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="sponsorship_letter">
-                        <span class="checkmark"></span>
-                        Lettre de prise en charge financière (garant)
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="tuition_proof">
-                        <span class="checkmark"></span>
-                        Preuve de paiement des frais de scolarité
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="gic_proof">
-                        <span class="checkmark"></span>
-                        Preuve de CPG (Certificat de Placement Garanti) - optionnel
-                    </label>
-                </li>
-            </ul>
-        </section>
+        <div class="grid-2">
+            <!-- Documents Académiques -->
+            <section class="card checklist-section" data-section="academic">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3>📂 Documents Académiques</h3>
+                    <button class="btn-reset" aria-label="Réinitialiser cette section">Réinitialiser</button>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <span class="progress-text">0%</span>
+                </div>
+                <ul class="checklist-items">
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="passport_valid">
+                            <span class="checkmark"></span>
+                            Passeport valide (pour toute la durée des études)
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="admission_letter">
+                            <span class="checkmark"></span>
+                            Lettre d'admission officielle (Etablissement DLI)
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="transcripts">
+                            <span class="checkmark"></span>
+                            Relevés de notes originaux et traductions
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="diplomas">
+                            <span class="checkmark"></span>
+                            Diplômes originaux et traductions
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="caq_approval">
+                            <span class="checkmark"></span>
+                            CAQ (Certificat d'Acceptation du Québec) - si applicable
+                        </label>
+                    </li>
+                </ul>
+            </section>
 
-        <!-- Immigration & Visa -->
-        <section class="card checklist-section" data-section="immigration">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                <h3>🛂 Immigration & Visa</h3>
-                <button class="btn-reset" aria-label="Réinitialiser cette section">Réinitialiser</button>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 0%"></div>
-                <span class="progress-text">0%</span>
-            </div>
-            <ul class="checklist-items">
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="biometrics">
-                        <span class="checkmark"></span>
-                        Données biométriques fournies
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="medical_exam">
-                        <span class="checkmark"></span>
-                        Visite médicale effectuée (si requise)
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="study_permit_app">
-                        <span class="checkmark"></span>
-                        Demande de permis d'études soumise
-                    </label>
-                </li>
-            </ul>
-        </section>
+            <!-- Documents Financiers -->
+            <section class="card checklist-section" data-section="financial">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3>💰 Documents Financiers</h3>
+                    <button class="btn-reset" aria-label="Réinitialiser cette section">Réinitialiser</button>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <span class="progress-text">0%</span>
+                </div>
+                <ul class="checklist-items">
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="bank_statements">
+                            <span class="checkmark"></span>
+                            Relevés bancaires (4 derniers mois)
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="sponsorship_letter">
+                            <span class="checkmark"></span>
+                            Lettre de prise en charge financière (garant)
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="tuition_proof">
+                            <span class="checkmark"></span>
+                            Preuve de paiement des frais de scolarité
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="gic_proof">
+                            <span class="checkmark"></span>
+                            Preuve de CPG (Certificat de Placement Garanti) - optionnel
+                        </label>
+                    </li>
+                </ul>
+            </section>
 
-        <!-- Avant le Départ -->
-        <section class="card checklist-section" data-section="departure">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                <h3>✈️ Avant le Départ</h3>
-                <button class="btn-reset" aria-label="Réinitialiser cette section">Réinitialiser</button>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 0%"></div>
-                <span class="progress-text">0%</span>
-            </div>
-            <ul class="checklist-items">
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="flight_ticket">
-                        <span class="checkmark"></span>
-                        Billet d'avion réservé
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="housing_temp">
-                        <span class="checkmark"></span>
-                        Logement temporaire réservé
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="insurance">
-                        <span class="checkmark"></span>
-                        Assurance voyage/maladie (pour les premiers jours)
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox-container">
-                        <input type="checkbox" data-id="winter_clothes">
-                        <span class="checkmark"></span>
-                        Vêtements d'hiver (ou budget pour acheter sur place)
-                    </label>
-                </li>
-            </ul>
-        </section>
-    </div>
-</main>
+            <!-- Immigration & Visa -->
+            <section class="card checklist-section" data-section="immigration">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3>🛂 Immigration & Visa</h3>
+                    <button class="btn-reset" aria-label="Réinitialiser cette section">Réinitialiser</button>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <span class="progress-text">0%</span>
+                </div>
+                <ul class="checklist-items">
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="biometrics">
+                            <span class="checkmark"></span>
+                            Données biométriques fournies
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="medical_exam">
+                            <span class="checkmark"></span>
+                            Visite médicale effectuée (si requise)
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="study_permit_app">
+                            <span class="checkmark"></span>
+                            Demande de permis d'études soumise
+                        </label>
+                    </li>
+                </ul>
+            </section>
 
-<footer>
-    <div class="container">
-        <p>&copy; 2023 GoCanada – Algérie. Projet étudiant à but informatif.</p>
-    </div>
-</footer>
+            <!-- Avant le Départ -->
+            <section class="card checklist-section" data-section="departure">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3>✈️ Avant le Départ</h3>
+                    <button class="btn-reset" aria-label="Réinitialiser cette section">Réinitialiser</button>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <span class="progress-text">0%</span>
+                </div>
+                <ul class="checklist-items">
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="flight_ticket">
+                            <span class="checkmark"></span>
+                            Billet d'avion réservé
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="housing_temp">
+                            <span class="checkmark"></span>
+                            Logement temporaire réservé
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="insurance">
+                            <span class="checkmark"></span>
+                            Assurance voyage/maladie (pour les premiers jours)
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-container">
+                            <input type="checkbox" data-id="winter_clothes">
+                            <span class="checkmark"></span>
+                            Vêtements d'hiver (ou budget pour acheter sur place)
+                        </label>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 GoCanada. Projet étudiant à but informatif.</p>
+        </div>
+    </footer>
 </body>
 
 </html>

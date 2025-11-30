@@ -4,75 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoCanada – Algérie | Accueil</title>
+    <title>GoCanada | Accueil</title>
     <link rel="stylesheet" href="/src/css/variables.css">
     <link rel="stylesheet" href="/src/css/global.css">
     <link rel="stylesheet" href="/src/css/components.css">
     <link rel="stylesheet" href="/src/css/enhancements.css">
     <script type="module" src="/src/js/app.js"></script>
-    <style>
-        /* Styles spécifiques à la page d'accueil pour le Hero */
-        .hero-section {
-            text-align: center;
-            padding: 4rem 1rem;
-            background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-main) 100%);
-            border-radius: var(--radius-lg);
-            margin-bottom: 3rem;
-            border: 1px solid var(--color-border);
-        }
-
-        .hero-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--color-text-muted);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            line-height: 1.6;
-        }
-
-        .feature-card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--color-primary);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            background: var(--color-bg-input);
-            padding: 1rem;
-            border-radius: 50%;
-        }
-    </style>
 </head>
 
 <body>
     <header class="site-header">
         <div class="container header-container">
             <a href="index.html" class="nav-logo">
-                <img src="/assets/logo.svg" alt="GoCanada" style="height: 40px; margin-right: 0.5rem; vertical-align: middle;">
-                GoCanada <span class="accent-red">–</span> Algérie
+                <img src="/assets/logo.svg" alt="GoCanada"
+                    style="height: 40px; margin-right: 0.5rem; vertical-align: middle;">
+                GoCanada
             </a>
 
             <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
@@ -96,70 +42,102 @@
 
     <main class="container">
         <!-- Hero Section -->
-            <section class="hero-section">
-                <h1 class="hero-title">Prépare ton projet d'études au Canada depuis l'Algérie.</h1>
-                <p class="hero-subtitle">Guides pratiques, checklists, simulateur de budget et ressources pour étudiants algériens —
-                    tout ce dont tu as besoin pour postuler, obtenir ton permis et réussir ton installation.</p>
-                <div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem; flex-wrap:wrap;">
-                    <a href="parcours.html" class="btn btn-primary btn-lg">Voir le parcours</a>
-                    <a href="budget.html" class="btn btn-secondary btn-lg">Ouvrir le simulateur</a>
+        <section class="hero-section">
+            <div class="hero-grid">
+                <div class="hero-content fade-in">
+                    <h1 class="hero-title">Étudier au Canada, simplifié pour les étudiants algériens.</h1>
+                    <p class="hero-subtitle">Parcours en étapes, simulateur de budget réaliste et checklists
+                        interactives pour éviter la confusion administrative.</p>
+                    <div class="hero-actions">
+                        <a href="parcours.html" class="btn btn-primary btn-lg">Commencer le parcours</a>
+                        <a href="budget.html" class="btn btn-secondary btn-lg">Simuler mon budget</a>
+                    </div>
                 </div>
-                <p style="margin-top:1rem; color:var(--color-text-muted);">Dernière mise à jour : ressources &amp; conseils actualisés pour 2025.</p>
-            </section>
-
-            <!-- Parcours Summary Cards -->
-            <section class="container" style="margin-top:2rem;">
-                <h2 style="text-align:center; margin-bottom:1rem;">Résumé du parcours</h2>
-                <div class="grid-3" style="gap:1rem;">
-                    <a href="parcours.html#steps-1-3" class="card feature-card" style="text-decoration:none; color:inherit;">
-                        <div>
-                            <span class="feature-icon">🎓</span>
-                            <h3>Choix & Admission</h3>
-                            <p>Choisir un programme, préparer le dossier, obtenir la lettre d'admission.</p>
+                <div class="hero-visual fade-in">
+                    <div class="dashboard-card">
+                        <div class="dashboard-header">
+                            <span class="dashboard-title">Aperçu Budget</span>
+                            <span class="dashboard-badge">Automne 2025</span>
                         </div>
-                        <div class="mt-md text-muted">En savoir plus →</div>
-                    </a>
-
-                    <a href="parcours.html#steps-4-5" class="card feature-card" style="text-decoration:none; color:inherit;">
-                        <div>
-                            <span class="feature-icon">💼</span>
-                            <h3>Financement & Permis</h3>
-                            <p>Preuves financières, CAQ (si Québec), demande de permis d'études.</p>
+                        <div class="dashboard-item">
+                            <span class="item-label">Preuve financière</span>
+                            <span class="item-value">20 635 $ CAD</span>
                         </div>
-                        <div class="mt-md text-muted">En savoir plus →</div>
-                    </a>
-
-                    <a href="parcours.html#steps-6-8" class="card feature-card" style="text-decoration:none; color:inherit;">
-                        <div>
-                            <span class="feature-icon">✈️</span>
-                            <h3>Biométrie & Départ</h3>
-                            <p>Biométrie, visa, préparation au départ et installation sur place.</p>
+                        <div class="dashboard-item">
+                            <span class="item-label">Frais de scolarité (est.)</span>
+                            <span class="item-value">17 000 $ CAD</span>
                         </div>
-                        <div class="mt-md text-muted">En savoir plus →</div>
-                    </a>
+                        <div class="dashboard-timeline">
+                            <div class="timeline-point active"></div>
+                            <div class="timeline-line"></div>
+                            <div class="timeline-point"></div>
+                            <div class="timeline-line"></div>
+                            <div class="timeline-point"></div>
+                        </div>
+                        <div class="dashboard-footer">
+                            <span class="footer-text">Prochaine étape : Admission</span>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Outils principaux -->
-            <section class="container" style="margin-top:2rem;">
-                <h2 style="text-align:center; margin-bottom:1rem;">Outils principaux</h2>
-                <div class="grid-3" style="gap:1rem; justify-items:center;">
-                    <a href="checklists.html" class="card" style="text-decoration:none; color:inherit; width:100%;">
-                        <h3>Checklists</h3>
-                        <p>Suivez vos documents et tâches étape par étape.</p>
-                    </a>
-                    <a href="budget.html" class="card" style="text-decoration:none; color:inherit; width:100%;">
-                        <h3>Simulateur de budget</h3>
-                        <p>Estimez vos coûts annuels et mensuels au Canada.</p>
-                    </a>
-                    <a href="ressources.html" class="card" style="text-decoration:none; color:inherit; width:100%;">
-                        <h3>Ressources</h3>
-                        <p>Liens officiels, guides et modèles de documents.</p>
-                    </a>
-                </div>
-            </section>
+        <!-- Parcours Summary Cards -->
+        <section class="container" style="margin-top:2rem;">
+            <h2 style="text-align:center; margin-bottom:1rem;">Résumé du parcours</h2>
+            <div class="grid-3" style="gap:1rem;">
+                <a href="parcours.html#steps-1-3" class="card feature-card"
+                    style="text-decoration:none; color:inherit;">
+                    <div>
+                        <span class="feature-icon">🎓</span>
+                        <h3>Choix & Admission</h3>
+                        <p>Choisir un programme, préparer le dossier, obtenir la lettre d'admission.</p>
+                    </div>
+                    <div class="mt-md text-muted">En savoir plus →</div>
+                </a>
+
+                <a href="parcours.html#steps-4-5" class="card feature-card"
+                    style="text-decoration:none; color:inherit;">
+                    <div>
+                        <span class="feature-icon">💼</span>
+                        <h3>Financement & Permis</h3>
+                        <p>Preuves financières, CAQ (si Québec), demande de permis d'études.</p>
+                    </div>
+                    <div class="mt-md text-muted">En savoir plus →</div>
+                </a>
+
+                <a href="parcours.html#steps-6-8" class="card feature-card"
+                    style="text-decoration:none; color:inherit;">
+                    <div>
+                        <span class="feature-icon">✈️</span>
+                        <h3>Biométrie & Départ</h3>
+                        <p>Biométrie, visa, préparation au départ et installation sur place.</p>
+                    </div>
+                    <div class="mt-md text-muted">En savoir plus →</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Outils principaux -->
+        <section class="container" style="margin-top:2rem;">
+            <h2 style="text-align:center; margin-bottom:1rem;">Outils principaux</h2>
+            <div class="grid-3" style="gap:1rem; justify-items:center;">
+                <a href="checklists.html" class="card" style="text-decoration:none; color:inherit; width:100%;">
+                    <h3>Checklists</h3>
+                    <p>Suivez vos documents et tâches étape par étape.</p>
+                </a>
+                <a href="budget.html" class="card" style="text-decoration:none; color:inherit; width:100%;">
+                    <h3>Simulateur de budget</h3>
+                    <p>Estimez vos coûts annuels et mensuels au Canada.</p>
+                </a>
+                <a href="ressources.html" class="card" style="text-decoration:none; color:inherit; width:100%;">
+                    <h3>Ressources</h3>
+                    <p>Liens officiels, guides et modèles de documents.</p>
+                </a>
+            </div>
+        </section>
+
         <div class="mt-md text-primary font-bold">Nous contacter &rarr;</div>
-        </a>
 
         <!-- Coming Soon / Community -->
         <div class="card feature-card" style="opacity: 0.7; cursor: default;">
@@ -172,13 +150,11 @@
             <div class="mt-md text-muted">Bientôt disponible</div>
         </div>
 
-        </div>
-        </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 GoCanada – Algérie. Projet étudiant à but informatif.</p>
+            <p>&copy; 2023 GoCanada. Projet étudiant à but informatif.</p>
         </div>
     </footer>
 </body>

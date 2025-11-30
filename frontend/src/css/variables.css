@@ -6,68 +6,57 @@
 
 :root {
   /* ==========================================
-       1. Palette de Couleurs
+       1. Palette de Couleurs (GoCanada)
        ========================================== */
 
   /* Couleurs Principales */
-  --color-primary: #d80621;
-  /* Rouge Canada */
-  --color-primary-dark: #a30419;
-  /* Rouge foncé (Hover) */
-  --color-accent: #ffc107;
-  /* Jaune (Accentuation) */
+  --color-primary: #1D3557;       /* Deep Blue */
+  --color-primary-dark: #162a45;  /* Darker Blue (Hover) */
+  --color-secondary: #2A9D8F;     /* Teal */
+  --color-accent: #E9C46A;        /* Gold/Soft Accent */
 
   /* Couleurs de Fond */
-  --color-bg-main: #f8f9fa;
-  /* Fond de page léger */
-  --color-bg-card: #ffffff;
-  /* Fond des cartes */
-  --color-bg-input: #f1f3f5;
-  /* Fond des champs de formulaire */
+  --color-bg-main: #F5F3F0;       /* Fond principal (Neutre chaud) */
+  --color-bg-card: #FFFFFF;       /* Fond des cartes */
+  --color-bg-input: #F1F5F9;      /* Fond des champs (Slate très clair) */
 
   /* Couleurs de Texte */
-  --color-text-main: #212529;
-  /* Texte principal (presque noir) */
-  --color-text-muted: #6c757d;
-  /* Texte secondaire (gris) */
-  --color-text-light: #ffffff;
-  /* Texte sur fond sombre */
+  --color-text-main: #1D3557;     /* Texte principal (Deep Blue) */
+  --color-text-muted: #64748B;    /* Texte secondaire (Slate) */
+  --color-text-light: #FFFFFF;    /* Texte sur fond sombre */
 
   /* Bordures */
-  --color-border: #dee2e6;
-  /* Gris clair pour bordures */
+  --color-border: #CBD5E1;        /* Gris clair bleuté */
+
+  /* Sémantique */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #DC2626;
 
   /* ==========================================
        2. Typographie
        ========================================== */
-  --font-family-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
   --font-size-base: 16px;
   --line-height-base: 1.6;
 
   /* ==========================================
        3. Espacements (Spacing System)
        ========================================== */
-  --spacing-xs: 0.5rem;
-  /* 8px */
-  --spacing-sm: 1rem;
-  /* 16px */
-  --spacing-md: 1.5rem;
-  /* 24px */
-  --spacing-lg: 2rem;
-  /* 32px */
-  --spacing-xl: 3rem;
-  /* 48px */
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 1rem;     /* 16px */
+  --spacing-md: 1.5rem;   /* 24px */
+  --spacing-lg: 2rem;     /* 32px */
+  --spacing-xl: 3rem;     /* 48px */
 
   /* ==========================================
        4. Effets & UI
        ========================================== */
   --radius-md: 8px;
-  /* Arrondi standard */
   --radius-lg: 12px;
-  /* Arrondi large */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 2px 4px rgba(29, 53, 87, 0.05);
+  --shadow-md: 0 4px 6px rgba(29, 53, 87, 0.1);
+  --shadow-lg: 0 10px 15px rgba(29, 53, 87, 0.1);
 
   /* Transitions */
   --transition-fast: 0.2s ease;
@@ -82,33 +71,24 @@
    Dark Theme Variables
    ========================================== */
 [data-theme='dark'] {
-  /* Couleurs de Fond (Dark) */
-  --color-bg-main: #0f172a;
-  /* Bleu nuit profond */
-  --color-bg-card: #1e293b;
-  /* Gris ardoise */
-  --color-bg-input: #334155;
-  /* Gris ardoise moyen */
+  /* Couleurs de Fond (Dark - Based on Deep Blue) */
+  --color-bg-main: #0B1623;       /* Très sombre, presque noir bleuté */
+  --color-bg-card: #15263F;       /* Bleu nuit profond */
+  --color-bg-input: #1E3A5F;      /* Bleu nuit plus clair */
 
   /* Couleurs de Texte (Dark) */
-  --color-text-main: #f1f5f9;
-  /* Texte clair */
-  --color-text-muted: #94a3b8;
-  /* Gris clair */
-  --color-text-light: #ffffff;
-  /* Blanc pur */
+  --color-text-main: #F1F5F9;     /* Slate très clair */
+  --color-text-muted: #94A3B8;    /* Slate clair */
+  --color-text-light: #FFFFFF;
 
   /* Bordures (Dark) */
   --color-border: #334155;
-  /* Gris plus visible sur fond sombre */
 
-  /* Ajustements pour Primary/Accent (plus lumineux en dark) */
-  --color-primary: #ef4444;
-  /* Rouge plus vif */
-  --color-primary-dark: #dc2626;
-  /* Rouge foncé pour hover */
-  --color-accent: #fcd34d;
-  /* Jaune plus doux */
+  /* Couleurs Principales (Adaptées pour le sombre) */
+  --color-primary: #A8DADC;       /* Bleu clair (Soft) pour le contraste */
+  --color-primary-dark: #457B9D;  /* Bleu moyen pour hover */
+  --color-secondary: #2A9D8F;     /* Teal reste vibrant */
+  --color-accent: #E9C46A;        /* Gold reste vibrant */
 
   /* Shadows adaptées */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -116,8 +96,7 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
 
   /* Glassmorphism (Dark) */
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  /* Gris ardoise semi-transparent */
+  --glass-bg: rgba(21, 38, 63, 0.7);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-blur: 12px;
 }

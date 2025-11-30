@@ -1,7 +1,7 @@
 {
     "name": "gocanada-frontend",
     "version": "1.0.0",
-    "description": "Frontend pour GoCanada - Algérie",
+    "description": "Frontend pour GoCanada",
     "type": "module",
     "scripts": {
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",

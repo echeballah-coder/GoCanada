@@ -1,10 +1,3 @@
-# GoCanada (Algérie)
-
-Résumé rapide et commandes utiles pour le développement local.
-
-## Structure
-- `backend/` : serveur Node/Express (API minimale + sert le frontend)
-- `frontend/` : code client (ES Modules), pages statiques dans `frontend/public`
 
 ## Prérequis
 - Node.js (v18+ recommandé)

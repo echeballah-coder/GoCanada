@@ -78,7 +78,7 @@
   color: white;
   box-shadow:
     0 0 0 6px var(--color-bg-main),
-    0 0 20px rgba(220, 38, 38, 0.4);
+    0 0 20px rgba(29, 53, 87, 0.4);
 }
 
 /* Contenu de l'étape */

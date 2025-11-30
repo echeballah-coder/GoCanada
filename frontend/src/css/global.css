@@ -320,16 +320,21 @@ footer {
 }
 
 /* Couleurs par type */
+/* Couleurs par type */
 .toast-success {
-  border-left-color: #10b981;
+  border-left-color: var(--color-success);
 }
 
 .toast-error {
-  border-left-color: #ef4444;
+  border-left-color: var(--color-error);
+}
+
+.toast-warning {
+  border-left-color: var(--color-warning);
 }
 
 .toast-info {
-  border-left-color: #3b82f6;
+  border-left-color: var(--color-primary);
 }
 
 .toast-close {
